@@ -1,0 +1,602 @@
+/* 重置預設樣式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, "Microsoft JhengHei", sans-serif;
+}
+
+/* Header 樣式 */
+.header {
+
+    padding: 50px 60px;
+    display: flex;
+    justify-content: space-between;
+    /* 左右兩邊對齊 */
+    align-items: center;
+    /* 垂直置中 */
+    justify-content: flex-start;
+    /* 改成靠左 */
+    gap: 50px;
+    /* Logo 和選單之間的間距 */
+}
+
+/* Logo 區域 */
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    /* Logo 圖片和文字之間的間距 */
+}
+
+/* Logo 圖片 */
+.logo-image {
+    width: 50px;
+    height: 50px;
+    background-color: #ff6600;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+/* Logo 文字區域 */
+.logo-text {
+    display: flex;
+    flex-direction: column;
+    /* 垂直排列 */
+}
+
+.logo-chinese {
+    font-size: 25px;
+    color: #FE5503;
+
+    letter-spacing: 3px;
+    font-weight: 900;
+
+    -webkit-text-stroke: 0.1px #462C16;
+    /* 文字的外框 */
+    font-family: "StarLoveMarker", sans-serif;
+}
+
+.logo-english {
+    font-size: 14px;
+    letter-spacing: 1px;
+    color: #FE5503;
+    -webkit-text-stroke: 0.7px #462C16;
+    /* 文字的外框 */
+    font-family: "StarLoveMarker", sans-serif;
+    text-transform: uppercase;
+}
+
+/* 導航選單容器 */
+.nav-menu {
+    display: flex;
+    gap: 30px;
+    /* 按鈕間距 */
+}
+
+/* 導航連結樣式 */
+.nav-link {
+    justify-content: flex-start;
+    color: #462C16;
+    font-family: "GenSenRounded2 TW";
+    font-weight: 700;
+    font-size: 20px;
+    padding: 10px 5px;
+    text-decoration: none;
+    /* 這行移除底線！ */
+
+    transition: all 0.3s;
+    /* 平滑過渡 */
+}
+
+/* 滑鼠移過去 */
+.nav-link:hover {
+    color: #B4F05A;
+    font-weight: 700;
+    -webkit-text-stroke: 0.5px #462C16;
+    transition: all 0.3s;
+}
+
+/* 當前選中的頁面 */
+.nav-link.active {
+    color: #B4F05A;
+    font-weight: 700;
+    -webkit-text-stroke: 0.5px #462C16;
+    position: relative;
+    /* 讓 ::after 可以定位 */
+}
+
+/* 在選中按鈕下方加上小圓點 */
+.nav-link.active::after {
+    content: '';
+    /* 必須有這行才會顯示 */
+    position: absolute;
+    /* 絕對定位 */
+    bottom: -8px;
+    /* 距離文字下方的距離 */
+    left: 50%;
+    /* 水平置中 */
+    transform: translateX(-50%);
+    /* 精確置中 */
+
+    width: 8px;
+    /* 圓點寬度 */
+    height: 8px;
+    /* 圓點高度 */
+    background-color: #B4F05A;
+    /* 圓點填充顏色 */
+    border: 0.5px solid #462C16;
+    /* 圓點外框：粗細 顏色 */
+    border-radius: 50%;
+    /* 變成圓形 */
+}
+
+
+/* ---- 漢堡按鈕 ---- */
+.hamburger {
+    position: fixed;
+    top: 50px;
+    right: 50px;
+    z-index: 4000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    width: 65px;
+    height: 65px;
+    background: #fff;
+    border: 1px solid #462C16;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.hamburger span {
+    display: block;
+    width: 26px;
+    height: 3px;
+    background: #462C16;
+    border-radius: 2px;
+    transition: transform 0.3s ease, opacity 0.3s ease, background 0.3s ease;
+}
+
+.hamburger.open span:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+}
+
+.hamburger.open span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.open span:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+}
+
+.hamburger.hide {
+    pointer-events: none;
+    opacity: 0;
+}
+
+/* ---- 菜單 Panel ---- */
+.menu-panel {
+    position: fixed;
+    top: 0px;
+    right: 0;
+    width: 80vw;
+    /* 右側占滿 90% */
+    height: 100vh;
+    background: rgb(255, 255, 255);
+    transform-origin: top right;
+    /* 從右上角展開 */
+    transform: scale(0.0);
+    opacity: 0;
+    transition: transform 0.35s ease, opacity 0.35s ease;
+    padding: 70px 30px;
+    z-index: 3000;
+    border-top-left-radius: 150px;
+    border-bottom-left-radius: 150px;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+/* 開啟狀態的動畫 */
+.menu-panel.open {
+    transform: scale(1);
+    opacity: 1;
+}
+
+/* 遮罩層 */
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.35);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 2500;
+}
+
+.overlay.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* ---- 選單清單 ---- */
+.menu-panel ul {
+    margin-top: 40px;
+    margin-left: 500px;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    font-family: "GenSenRounded2 TW";
+    color: #462C16;
+}
+
+.menu-panel a {
+    text-decoration: none;
+    font-size: 22px;
+    color: #462C16;
+    
+}
+
+/* ========== 選單容器（三列布局） ========== */
+.menu-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 40px;
+    padding: 40px 40px 40px 40px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* ========== 每一列 ========== */
+.menu-column {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* 避免內容垂直偏移 */
+}
+
+.column-title {
+    font-size: 30px;
+    font-weight: 700;
+    color: #462C16;
+    margin-bottom: 25px;
+    padding-bottom: 10px;
+    position: relative;
+    padding-left: 22px; /* 留給綠點的空間 */
+}
+
+.menu-column:nth-child(1) .column-title::before,
+.menu-column:nth-child(2) .column-title::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 15px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #B4F05A;
+    border: 1px solid #462C16;
+}
+
+/* 選單列表 */
+.menu-column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menu-column li {
+    margin-bottom: 15px;
+}
+
+.menu-column a {
+    display: inline-block;
+    text-decoration: none;
+    color: #462c16ad;
+    font-size: 20px;
+    font-weight: 500;
+    padding: 1px 2px;
+    transition: color 0.3s ease, background-color 0.3s ease;
+    margin-top: 0px;
+    position: relative;
+}
+
+.menu-column a:hover {
+    color: #462C16;
+}
+
+.menu-column a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 2px;
+    background: #ff6600;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.25s ease;
+}
+
+.menu-column a:hover::after {
+    transform: scaleX(1);
+}
+
+.menu-column a.active {
+    background-color: #B4F05A;
+    color: #462C16;
+    border-left-color: #462C16;
+    font-weight: 600;
+}
+
+/* ========== 登入表單（第三列） ========== */
+.login-column {
+    padding: 0px 0px 0px 0px;
+    border-left: 1px solid #462c1675;
+    padding-left: 70px;
+    margin-left: -50px; /* 整列左移，內容不變 */
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.input-field {
+    width: 100%;
+    padding: 12px 15px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 100px;
+    transition: all 0.3s;
+    font-family: "GenSenRounded2 TW";
+}
+
+.input-field::placeholder {
+    color: #999;
+}
+
+.login-btn,
+.register-btn {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-family: "GenSenRounded2 TW";
+}
+
+.login-btn {
+    background-color: #ff6600;
+    color: white;
+}
+
+.login-btn:hover {
+    background-color: #ff9151;
+}
+
+.register-btn {
+    background-color: white;
+    color: #ff6600;
+    border: 1.5px solid #ff6600;
+}
+
+.register-btn:hover {
+    background-color: #ff6600;
+    color:#fff;
+}
+
+
+.contact-info {
+    grid-column: 1 / 4;   /* 占滿三欄 */
+}
+
+.contact-title {
+    font-size: 30px;
+    font-weight: 700;
+    color: #462C16;
+    font-family: "GenSenRounded2 TW";
+    margin-bottom: 30px;
+    text-align: left;
+    position: relative;
+    padding-left: 22px;
+}
+
+/* 標題前的綠點 */
+.contact-title::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #B4F05A;
+    border: 1px solid #462C16;
+}
+
+/* 聯絡資訊 - 橫向排列 */
+.contact-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    max-width: 100%;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+    background: #fff;
+    border-radius: 100px;
+    border: 1px solid #e5e5e5;
+    white-space: nowrap;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+
+
+.contact-icon {
+    font-size: 20px;
+    flex-shrink: 0;
+    line-height: 1;
+}
+
+.contact-details {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.contact-label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #999;
+    font-family: "GenSenRounded2 TW";
+}
+
+.contact-text {
+    font-size: 15px;
+    color: #462C16;
+    font-weight: 500;
+    margin: 0;  
+    font-family: "GenSenRounded2 TW";
+}
+
+/* ========== 社群媒體連結（橫向） ========== */
+.social-media {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 15px;
+    flex-wrap: wrap;
+    column-gap: 18px;
+    row-gap: 10px;
+}
+
+.social-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 10px;
+    border-radius: 100px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 15px;
+    font-family: "GenSenRounded2 TW";
+    transition: all 0.3s ease;
+}
+
+.social-icon {
+    font-size: 20px;
+    line-height: 1;
+}
+
+/* Instagram 樣式 */
+.social-link.instagram {
+    border: 0.7px, solid, #462C16;
+    color: #462C16;
+}
+
+.social-link.instagram:hover {
+    transform: scaleX(1.1);
+    background: #1F95EE;
+    color: white;
+}
+
+/* Facebook 樣式 */
+.social-link.facebook {
+    border: 0.7px, solid, #462C16;
+    color: #462C16;
+}
+
+.social-link.facebook:hover {
+    transform: scaleX(1.1);
+    background: #1F95EE;
+    color: white;
+}
+
+/* LINE 樣式 */
+.social-link.line {
+    border: 0.7px, solid, #462C16;
+    color: #462C16;
+}
+
+.social-link.line:hover {
+    transform: scaleX(1.1);
+    background: #1F95EE;
+    color: white;
+}
+
+
+/* ========== 響應式設計 ========== */
+
+/* 當螢幕寬度小於或等於 768px 時 */
+@media screen and (max-width: 768px) {
+    .nav-menu {
+        display: none;
+        /* 隱藏導航選單 */
+    }
+
+    .header {
+        gap: 0;
+        /* 移除間距 */
+        justify-content: space-between;
+        /* Logo 和漢堡選單左右分開 */
+    }
+
+    .hamburger-btn {
+        position: static;
+        /* 取消絕對定位 */
+    }
+}
+
+/* 當螢幕寬度小於或等於 480px 時（手機） */
+@media screen and (max-width: 480px) {
+    .header {
+        padding: 15px 20px;
+        /* 減少 padding */
+    }
+
+    .logo-chinese {
+        font-size: 16px;
+        /* 縮小 Logo 文字 */
+    }
+
+    .logo-english {
+        font-size: 10px;
+    }
+
+    .logo-image {
+        width: 40px;
+        /* 縮小 Logo 圖片 */
+        height: 40px;
+        font-size: 20px;
+    }
+
+    .hamburger-btn {
+        width: 40px;
+        /* 縮小漢堡選單 */
+        height: 40px;
+    }
+
+    .hamburger-btn span {
+        width: 18px;
+    }
+}
