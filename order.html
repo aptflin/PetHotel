@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Header 教學</title>
+    <title>預約服務 - HEHE PET HOTEL</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -26,10 +26,10 @@
 
         <!-- 中間：導航選單 -->
         <nav class="nav-menu">
-            <a href="#about" class="nav-link active">關於我們</a>
-            <a href="order.html" class="nav-link">訂購</a>
-            <a href="#contact" class="nav-link">聯繫方式</a>
-            <a href="#member" class="nav-link">會員專區</a>
+            <a href="index.html#about" class="nav-link">關於我們</a>
+            <a href="order.html" class="nav-link active">訂購</a>
+            <a href="index.html#contact" class="nav-link">聯繫方式</a>
+            <a href="index.html#member" class="nav-link">會員專區</a>
         </nav>
 
         <!-- 漢堡按鈕 -->
@@ -46,9 +46,9 @@
                 <div class="menu-column">
                     <h3 class="column-title">服務項目</h3>
                     <ul>
-                        <li><a href="#service">服務內容</a></li>
-                        <li><a href="#order-service">訂單式服務</a></li>
-                        <li><a href="#sitter">保母</a></li>
+                        <li><a href="index.html#service">服務內容</a></li>
+                        <li><a href="index.html#order-service">訂單式服務</a></li>
+                        <li><a href="index.html#sitter">保母</a></li>
                     </ul>
                 </div>
         
@@ -56,8 +56,8 @@
                 <div class="menu-column">
                     <h3 class="column-title">資訊</h3>
                     <ul>
-                        <li><a href="#environment">旅館環境</a></li>
-                        <li><a href="#location">地理位置</a></li>
+                        <li><a href="index.html#environment">旅館環境</a></li>
+                        <li><a href="index.html#location">地理位置</a></li>
                         <li><a href="order.html">訂購</a></li>
                     </ul>
                 </div>
@@ -145,16 +145,62 @@
     <!-- 遮罩層（在 header 外面！） -->
     <div class="overlay" id="overlay"></div>
 
-    <!-- 簡單的內容區域 -->
-    <div style="padding: 40px; text-align: center;">
-        
-    </div>
+    <!-- 訂購區塊 -->
+    <section id="order" class="order-section">
+        <div class="container">
+            <h2 class="section-title">預約服務</h2>
+            
+            <!-- 未登入提示 -->
+            <div id="orderGuestView" class="order-guest-view">
+                <p>請先登入會員以進行預約</p>
+                <button id="goToLoginBtn" class="btn-primary">前往登入</button>
+            </div>
 
-    <!-- 懸浮購物車按鈕 -->
-    <div id="floatingCart" class="floating-cart" style="display: none;">
-        <span class="cart-icon">🛒</span>
-        <span class="cart-text">回到預約</span>
-    </div>
+            <!-- 訂購流程 (登入後顯示) -->
+            <div id="orderMemberView" class="order-member-view" style="display: none;">
+                
+                <!-- 步驟內容 -->
+                <div class="step-content" id="step1">
+                    <h3>1. 請問要住宿幾晚？</h3>
+                    <div class="nights-selector">
+                        <button class="night-btn" data-value="1">1 晚</button>
+                        <button class="night-btn" data-value="2">2 晚</button>
+                        <button class="night-btn" data-value="3">3 晚</button>
+                        <button class="night-btn" data-value="5">5 晚</button>
+                        <button class="night-btn" data-value="7">7 晚</button>
+                        <input type="number" id="customNights" placeholder="自訂天數" min="1" class="input-field" style="width: 120px; display: inline-block;">
+                    </div>
+                </div>
+
+                <div class="step-content" id="step2">
+                    <h3>2. 選擇服務項目</h3>
+                    <div class="service-list" id="serviceList">
+                        <!-- JS Render Services -->
+                    </div>
+                </div>
+
+                <div class="step-content" id="step3">
+                    <h3>3. 選擇專屬保母</h3>
+                    <div class="filter-controls">
+                        <label>最高預算: <span id="priceRangeVal">5000</span> 元</label>
+                        <input type="range" id="priceRange" min="500" max="5000" step="100" value="5000">
+                    </div>
+                    <div class="sitter-list" id="sitterList">
+                        <!-- JS Render Sitters -->
+                    </div>
+                </div>
+
+                <div class="step-content" id="step4">
+                    <h3>4. 訂單確認</h3>
+                    <div id="orderSummary" class="order-summary">
+                        <!-- JS Render Summary -->
+                    </div>
+                    <button id="submitOrderBtn" class="btn-primary" style="width: 100%; padding: 20px; font-size: 24px;">送出訂單</button>
+                </div>
+
+            </div>
+        </div>
+    </section>
 
     <script src="function.js"></script>
 </body>
