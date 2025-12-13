@@ -65,11 +65,22 @@
                 <!-- 第三列：會員登入 -->
                 <div class="menu-column login-column">
                     <h3 class="column-title">會員中心</h3>
-                    <div class="login-form">
-                        <input type="text" placeholder="帳號" class="input-field">
-                        <input type="password" placeholder="密碼" class="input-field">
-                        <button class="login-btn">登入</button>
+                    <div class="login-form" id="loginForm">
+                        <input type="text" id="username" placeholder="帳號" class="input-field">
+                        <input type="password" id="password" placeholder="密碼" class="input-field">
+                        <div id="loginError" class="error-message"></div>
+                        <button id="loginBtn" class="login-btn">登入</button>
                         <button class="register-btn">註冊</button>
+                    </div>
+
+                    <!-- 會員登入後資訊 -->
+                    <div class="user-info" id="userInfo" style="display: none;">
+                        <div class="user-avatar">
+                            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix" alt="User Avatar">
+                        </div>
+                        <div class="user-name" id="displayUsername">Admin</div>
+                        <button class="member-area-btn">會員專區</button>
+                        <button id="logoutBtn" class="logout-btn">登出</button>
                     </div>
                 </div>
                 <!-- 聯絡資訊區域 -->

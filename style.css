@@ -600,3 +600,98 @@ body {
         width: 18px;
     }
 }
+/* User Info (Logged In State) */
+.user-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    text-align: center;
+}
+
+.user-avatar {
+    width: 80px;
+    height: 80px;
+    background-color: #ddd;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    color: #666;
+    margin-bottom: 10px;
+    overflow: hidden;
+    border: 2px solid #ff6600;
+}
+
+.user-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.user-name {
+    font-size: 20px;
+    font-weight: bold;
+    color: #462C16;
+    margin-bottom: 10px;
+    font-family: 'GenSenRounded2 TW';
+}
+
+.member-area-btn {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-family: 'GenSenRounded2 TW';
+    background-color: #B4F05A;
+    color: #462C16;
+}
+
+.member-area-btn:hover {
+    background-color: #a0d850;
+}
+
+.logout-btn {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-family: 'GenSenRounded2 TW';
+    background-color: transparent;
+    color: #666;
+}
+
+.logout-btn:hover {
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+
+/* Login Error Styles */
+.input-field.input-error {
+    border-color: #ff4d4d;
+    background-color: #fff0f0;
+}
+
+.error-message {
+    color: #ff4d4d;
+    font-size: 14px;
+    font-family: 'GenSenRounded2 TW';
+    margin-top: -5px;
+    margin-bottom: 5px;
+    display: none; /* Hidden by default */
+}
+
+.error-message.show {
+    display: block;
+}
+
