@@ -76,6 +76,27 @@ function updateOrderView() {
       floatingCart.style.display = "none";
     }
   }
+
+  // Member Page Logic (on member.html)
+  const memberGuestView = document.getElementById("memberGuestView");
+  const memberMemberView = document.getElementById("memberMemberView");
+  const memberDisplayName = document.getElementById("memberDisplayName");
+  const memberInfoName = document.getElementById("memberInfoName");
+  
+  if (memberGuestView && memberMemberView) {
+    if (isLoggedIn) {
+      memberGuestView.style.display = "none";
+      memberMemberView.style.display = "block";
+      
+      // 更新會員名稱（從 localStorage 取得）
+      const username = localStorage.getItem("username") || "Admin";
+      if (memberDisplayName) memberDisplayName.textContent = username;
+      if (memberInfoName) memberInfoName.textContent = username;
+    } else {
+      memberGuestView.style.display = "block";
+      memberMemberView.style.display = "none";
+    }
+  }
 }
 
 // Initial UI Update
@@ -85,6 +106,14 @@ if (goToLoginBtn) {
   goToLoginBtn.addEventListener("click", () => {
     toggleMenu(true);
     // Scroll to login section if needed, or just open menu
+  });
+}
+
+// 會員專區的「前往登入」按鈕
+const memberGoToLoginBtn = document.getElementById("memberGoToLoginBtn");
+if (memberGoToLoginBtn) {
+  memberGoToLoginBtn.addEventListener("click", () => {
+    toggleMenu(true);
   });
 }
 
@@ -116,6 +145,7 @@ if (loginBtn) {
       localStorage.setItem("username", username);
       saveState();
       updateLoginUI();
+      updateOrderView(); // 確保會員專區也會更新
       
       // Clear inputs
       usernameInput.value = "";

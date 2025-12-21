@@ -699,7 +699,7 @@ body {
 /* Order Section Styles */
 .order-section {
     padding: 60px 20px;
-    background-color: #f9f9f9;
+    background-color: #FFFCF5;
     min-height: 600px;
 }
 
@@ -1027,3 +1027,568 @@ body {
     font-size: 24px;
 }
 
+
+/* 日系精簡風格 - 會員專區 CSS */
+
+.member-page {
+    max-width: 1100px;
+    margin: 0 auto 80px;
+    padding: 0 20px 40px;
+    background-color: #FFFCF5;
+  }
+  
+  body {
+    background-color: #FFFCF5;
+    font-family: "GenSenRounded2 TW", "Noto Sans TC", sans-serif;
+  }
+  
+  /* 會員概覽 */
+  .member-hero {
+    margin-top: 20px;
+    margin-bottom: 28px;
+    padding: 32px;
+    border-radius: 16px;
+    background: #FFFFFF;
+    box-shadow: 0 2px 12px rgba(70, 44, 22, 0.06);
+    border: 1px solid #F5F0E8;
+    display: flex;
+    justify-content: space-between;
+    gap: 32px;
+    align-items: center;
+    font-family: "GenSenRounded2 TW";
+    transition: box-shadow 0.3s ease;
+  }
+  
+  .member-hero:hover {
+    box-shadow: 0 4px 20px rgba(254, 85, 3, 0.1);
+  }
+  
+  .member-hero-left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  .member-avatar {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid #FE5503;
+    background-color: #FFF8F0;
+    transition: transform 0.3s ease;
+  }
+  
+  .member-avatar:hover {
+    transform: scale(1.05);
+  }
+  
+  .member-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .member-name {
+    font-size: 20px;
+    font-weight: 700;
+    color: #462C16;
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+  }
+  
+  .member-tag-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  
+  .member-tag {
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 12px;
+    color: #666;
+    background-color: #F5F0E8;
+    font-weight: 500;
+  }
+  
+  .member-level {
+    background-color: #B4F05A;
+    color: #462C16;
+    font-weight: 700;
+  }
+  
+  .member-hero-right {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  
+  .member-stat {
+    min-width: 100px;
+    text-align: center;
+  }
+  
+  .member-stat-label {
+    font-size: 11px;
+    color: #999;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  
+  .member-stat-value {
+    font-size: 24px;
+    font-weight: 700;
+    color: #FE5503;
+  }
+  
+  /* 分頁 Tabs */
+  .member-tabs {
+    margin-top: 8px;
+    font-family: "GenSenRounded2 TW";
+  }
+  
+  .member-tab-list {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 24px;
+    overflow-x: auto;
+    padding-bottom: 4px;
+  }
+  
+  .member-tab-list::-webkit-scrollbar {
+    height: 3px;
+  }
+  
+  .member-tab-list::-webkit-scrollbar-thumb {
+    background: #FE5503;
+    border-radius: 2px;
+  }
+  
+  .member-tab {
+    padding: 12px 24px;
+    border-radius: 8px;
+    border: 1px solid #E8E3D8;
+    background: #FFFFFF;
+    cursor: pointer;
+    font-size: 14px;
+    color: #666;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+  }
+  
+  .member-tab:hover {
+    border-color: #FE5503;
+    color: #FE5503;
+    background: #FFF8F0;
+  }
+  
+  .member-tab.active {
+    background: #FE5503;
+    color: #FFFFFF;
+    border-color: #FE5503;
+    box-shadow: 0 2px 8px rgba(254, 85, 3, 0.25);
+  }
+  
+  /* 分頁內容卡片 */
+  .member-tab-panel {
+    display: none;
+    animation: fadeIn 0.4s ease;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .member-tab-panel.active {
+    display: block;
+  }
+  
+  .member-card {
+    background: #FFFFFF;
+    border-radius: 16px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(70, 44, 22, 0.06);
+    border: 1px solid #F5F0E8;
+  }
+  
+  .member-card-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #462C16;
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #F5F0E8;
+  }
+  
+  /* 個人資料 grid */
+  .member-info-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+  }
+  
+  .member-info-item {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 16px;
+    background: #FFFFFF;
+    border-radius: 10px;
+    border: 1px solid #F5F0E8;
+    transition: border-color 0.3s ease;
+  }
+  
+  .member-info-item:hover {
+    border-color: #FE5503;
+  }
+  
+  .member-info-item-full {
+    grid-column: 1 / -1;
+  }
+  
+  .member-info-label {
+    font-size: 11px;
+    color: #999;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  
+  .member-info-value {
+    font-size: 14px;
+    color: #462C16;
+    font-weight: 500;
+  }
+  
+  /* 訂單列表 */
+  .member-order-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .order-filter {
+    padding: 8px 16px;
+    border-radius: 8px;
+    border: 1px solid #E8E3D8;
+    background: #FFFFFF;
+    font-size: 13px;
+    cursor: pointer;
+    color: #666;
+    font-weight: 600;
+    transition: all 0.3s ease;
+  }
+  
+  .order-filter:hover {
+    border-color: #FE5503;
+    color: #FE5503;
+  }
+  
+  .order-filter.active {
+    border-color: #FE5503;
+    color: #FFFFFF;
+    background: #FE5503;
+    box-shadow: 0 2px 8px rgba(254, 85, 3, 0.2);
+  }
+  
+  .member-order-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .member-order-item {
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid #F5F0E8;
+    background: #FFFFFF;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    align-items: center;
+    transition: all 0.3s ease;
+  }
+  
+  .member-order-item:hover {
+    border-color: #FE5503;
+    box-shadow: 0 4px 16px rgba(254, 85, 3, 0.1);
+    transform: translateX(2px);
+  }
+  
+  .order-main {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1;
+  }
+  
+  .order-id-date {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    font-size: 12px;
+    color: #999;
+  }
+  
+  .order-id {
+    color: #1C92E6;
+    font-weight: 600;
+  }
+  
+  .order-detail {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    font-size: 14px;
+    color: #462C16;
+    font-weight: 500;
+  }
+  
+  .order-side {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-end;
+  }
+  
+  .order-price {
+    font-size: 20px;
+    font-weight: 700;
+    color: #FE5503;
+  }
+  
+  .order-status {
+    font-size: 11px;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-weight: 600;
+  }
+  
+  .order-status-on-going {
+    background: #FFF4E6;
+    color: #FE5503;
+    border: 1px solid #FE5503;
+  }
+  
+  .order-status-done {
+    background: #F0FAEB;
+    color: #5A8C2A;
+    border: 1px solid #B4F05A;
+  }
+  
+  .order-link-btn {
+    margin-top: 4px;
+    border: none;
+    background: none;
+    font-size: 12px;
+    color: #1C92E6;
+    cursor: pointer;
+    font-weight: 600;
+    text-decoration: underline;
+    transition: color 0.3s ease;
+  }
+  
+  .order-link-btn:hover {
+    color: #0D6FB8;
+  }
+  
+  /* 寵物卡片 */
+  .pet-card-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+  }
+  
+  .pet-card {
+    border-radius: 12px;
+    border: 1px solid #F5F0E8;
+    background: #FFFFFF;
+    padding: 20px;
+    transition: all 0.3s ease;
+  }
+  
+  .pet-card:hover {
+    border-color: #B4F05A;
+    box-shadow: 0 4px 16px rgba(180, 240, 90, 0.15);
+    transform: translateY(-2px);
+  }
+  
+  .pet-header {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #F5F0E8;
+  }
+  
+  .pet-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #FFF4E6 0%, #FFE8CC 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    border: 2px solid #FE5503;
+  }
+  
+  .pet-name {
+    font-size: 16px;
+    font-weight: 700;
+    color: #462C16;
+    margin-bottom: 2px;
+  }
+  
+  .pet-sub {
+    font-size: 12px;
+    color: #999;
+  }
+  
+  .pet-info {
+    font-size: 13px;
+    color: #462C16;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .pet-label {
+    display: inline-block;
+    font-size: 11px;
+    color: #FE5503;
+    margin-right: 6px;
+    font-weight: 700;
+    min-width: 80px;
+  }
+  
+  /* 照顧日誌 */
+  .care-log-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .care-log-item {
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid #F5F0E8;
+    background: #FFFFFF;
+    transition: all 0.3s ease;
+  }
+  
+  .care-log-item:hover {
+    border-color: #1C92E6;
+    box-shadow: 0 4px 16px rgba(28, 146, 230, 0.1);
+  }
+  
+  .care-log-header {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    align-items: flex-start;
+    margin-bottom: 12px;
+    padding-bottom: 12px;
+    border-bottom: 1px dashed #E8E3D8;
+  }
+  
+  .care-log-date {
+    font-size: 12px;
+    color: #1C92E6;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  
+  .care-log-pet {
+    font-size: 14px;
+    color: #462C16;
+    font-weight: 600;
+  }
+  
+  .care-log-tag {
+    font-size: 11px;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  
+  .care-log-tag {
+    background: #FFF4E6;
+    color: #FE5503;
+    border: 1px solid #FE5503;
+  }
+  
+  .care-log-tag-done {
+    background: #F0FAEB;
+    color: #5A8C2A;
+    border: 1px solid #B4F05A;
+  }
+  
+  .care-log-body {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.8;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  /* 響應式 */
+  @media (max-width: 768px) {
+    .member-hero {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 24px;
+    }
+    
+    .member-hero-right {
+      width: 100%;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    
+    .member-stat {
+      min-width: auto;
+      flex: 1;
+    }
+    
+    .member-info-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .member-order-item {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    
+    .order-side {
+      align-items: flex-start;
+      text-align: left;
+      width: 100%;
+      flex-direction: row;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+    
+    .pet-card-list {
+      grid-template-columns: 1fr;
+    }
+    
+    .member-card {
+      padding: 20px;
+    }
+  }
