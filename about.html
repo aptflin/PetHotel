@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>關於我們 - HEHE PET HOTEL</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="about.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="logo-container">
+      <div class="logo-image"></div>
+      <div class="logo-text">
+        <div class="logo-chinese">哈哈<br>寵物旅館</div>
+        <div class="logo-english">HEHE PET HOTEL</div>
+      </div>
+    </div>
+
+    <nav class="nav-menu">
+      <a href="index.html" class="nav-link">首頁</a>
+      <a href="about.html" class="nav-link active">關於我們</a>
+      <a href="order.html" class="nav-link">訂購</a>
+      <a href="index.html#contact" class="nav-link">聯繫方式</a>
+      <a href="member.html" class="nav-link">會員專區</a>
+    </nav>
+
+    <button id="hamburger" class="hamburger">
+      <span></span><span></span><span></span>
+    </button>
+    <div id="menuPanel" class="menu-panel">
+      <!-- 側邊選單內容 -->
+    </div>
+  </header>
+
+  <div class="overlay" id="overlay"></div>
+
+  <!-- 關於我們主體 -->
+  <main class="about-page">
+    
+    <!-- Hero Section - 滿版 -->
+    <section class="about-hero full-width">
+      <div class="hero-bg"></div>
+      <div class="hero-content-wrapper">
+        <h1 class="hero-title fade-in-up">讓每隻毛孩<br>都能安心度假</h1>
+        <p class="hero-subtitle fade-in-up delay-200">HEHE PET HOTEL</p>
+        <p class="hero-description fade-in-up delay-400">專業溫馨的寵物住宿服務・如家般的舒適關愛</p>
+      </div>
+    </section>
+
+    <!-- 品牌故事 - 左右切版 -->
+    <section class="brand-story split-section">
+      <div class="split-left bg-orange">
+        <div class="split-content fade-in-left">
+          <div class="section-label">Our Story</div>
+          <h2 class="section-title-white">品牌故事</h2>
+          <div class="story-stats-grid">
+            <div class="stat-box scale-in delay-100">
+              <div class="stat-number count-up" data-target="3000" data-suffix="+">0</div>
+              <div class="stat-label">服務毛孩</div>
+            </div>
+            <div class="stat-box scale-in delay-200">
+              <div class="stat-number count-up" data-target="5" data-suffix="年">0</div>
+              <div class="stat-label">專業經驗</div>
+            </div>
+            <div class="stat-box scale-in delay-300">
+              <div class="stat-number count-up" data-target="98" data-suffix="%">0</div>
+              <div class="stat-label">滿意度</div>
+            </div>
+            <div class="stat-box scale-in delay-400">
+              <div class="stat-number count-up" data-target="15" data-suffix="位">0</div>
+              <div class="stat-label">專業保母</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="split-right">
+        <div class="split-content fade-in-right">
+          <p class="story-text">HEHE PET HOTEL 成立於 2020 年，源自於創辦人對寵物的深厚情感。我們深知每位飼主與毛孩之間的羈絆，也理解當您必須短暫離開時的不捨與擔心。</p>
+          <p class="story-text">因此，我們打造了這個充滿愛與專業的空間，讓每一隻來到這裡的毛孩都能得到如家人般的照顧。從環境設計到照護細節，我們都以「讓飼主安心、讓毛孩開心」為最高原則。</p>
+          <p class="story-text">五年來，我們已經照顧超過 3,000 隻毛孩，累積了豐富的照護經驗。每一次的服務，都是我們與毛孩建立信任的過程，也是我們持續精進的動力。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 服務特色 - 滿版網格 -->
+    <section class="features-section full-width bg-light">
+      <div class="container-narrow">
+        <div class="section-header-center fade-in-up">
+          <div class="section-label-dark">Our Features</div>
+          <h2 class="section-title-dark">服務特色</h2>
+        </div>
+        
+        <div class="features-grid-3">
+          <div class="feature-box fade-in-up delay-100">
+            <div class="feature-icon"><i class="fas fa-home"></i></div>
+            <h3 class="feature-title">家庭式環境</h3>
+            <p class="feature-desc">溫馨舒適的住宿空間，讓毛孩感受家的溫暖，減少分離焦慮。</p>
+          </div>
+          
+          <div class="feature-box fade-in-up delay-200">
+            <div class="feature-icon"><i class="fas fa-user-md"></i></div>
+            <h3 class="feature-title">專業照護團隊</h3>
+            <p class="feature-desc">所有保母均通過專業訓練，具備寵物行為學與急救知識。</p>
+          </div>
+          
+          <div class="feature-box fade-in-up delay-300">
+            <div class="feature-icon"><i class="fas fa-camera"></i></div>
+            <h3 class="feature-title">每日照顧日誌</h3>
+            <p class="feature-desc">每天更新毛孩的生活照片與狀況報告，讓您隨時掌握動態。</p>
+          </div>
+          
+          <div class="feature-box fade-in-up delay-400">
+            <div class="feature-icon"><i class="fas fa-bowl-food"></i></div>
+            <h3 class="feature-title">客製化飲食</h3>
+            <p class="feature-desc">依照每隻毛孩的特殊需求，提供個別化的飲食照護方案。</p>
+          </div>
+          
+          <div class="feature-box fade-in-up delay-500">
+            <div class="feature-icon"><i class="fas fa-baseball"></i></div>
+            <h3 class="feature-title">豐富活動安排</h3>
+            <p class="feature-desc">規劃適合的散步、遊戲時間，讓毛孩保持活力與好心情。</p>
+          </div>
+          
+          <div class="feature-box fade-in-up delay-600">
+            <div class="feature-icon"><i class="fas fa-heart"></i></div>
+            <h3 class="feature-title">24小時關注</h3>
+            <p class="feature-desc">全天候照顧與監控，確保毛孩的安全與健康狀態。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 環境設施 - 上下切版 -->
+    <section class="facilities-section">
+      <div class="facility-row">
+        <div class="facility-text-left fade-in-left">
+          <div class="facility-content">
+            <div class="facility-number">01</div>
+            <h3 class="facility-title">舒適住宿區</h3>
+            <p class="facility-desc">依照犬貓體型分級，提供小型、中型、大型犬專屬房間，以及獨立貓咪套房。每間房都配有舒適床墊、玩具與飲水設備，確保毛孩住得安心舒適。</p>
+          </div>
+        </div>
+        <div class="facility-image-right bg-cream fade-in-right">
+          <div class="facility-icon"><i class="fas fa-bed"></i></div>
+        </div>
+      </div>
+
+      <div class="facility-row reverse">
+        <div class="facility-image-left bg-green fade-in-left">
+          <div class="facility-icon"><i class="fas fa-tree"></i></div>
+        </div>
+        <div class="facility-text-right fade-in-right">
+          <div class="facility-content">
+            <div class="facility-number">02</div>
+            <h3 class="facility-title">戶外活動區</h3>
+            <p class="facility-desc">寬敞的草地遊戲區，讓狗狗盡情奔跑。設有遮陽設施與休息區，確保毛孩在安全舒適的環境下活動，享受陽光與新鮮空氣。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="facility-row">
+        <div class="facility-text-left fade-in-left">
+          <div class="facility-content">
+            <div class="facility-number">03</div>
+            <h3 class="facility-title">專業美容室</h3>
+            <p class="facility-desc">提供洗澡、美容、指甲修剪等服務。使用寵物專用低敏感清潔產品，讓毛孩在退房時乾淨舒爽，煥然一新。</p>
+          </div>
+        </div>
+        <div class="facility-image-right bg-blue fade-in-right">
+          <div class="facility-icon"><i class="fas fa-shower"></i></div>
+        </div>
+      </div>
+
+      <div class="facility-row reverse">
+        <div class="facility-image-left bg-pink fade-in-left">
+          <div class="facility-icon"><i class="fas fa-hospital"></i></div>
+        </div>
+        <div class="facility-text-right fade-in-right">
+          <div class="facility-content">
+            <div class="facility-number">04</div>
+            <h3 class="facility-title">醫療保健區</h3>
+            <p class="facility-desc">配備基本醫療設備與藥品，並與鄰近動物醫院合作。緊急狀況可立即處理，全方位守護毛孩的健康安全。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 團隊介紹 - 滿版深色 -->
+    <section class="team-section full-width bg-dark">
+      <div class="container-narrow">
+        <div class="section-header-center fade-in-up">
+          <div class="section-label-light">Meet Our Team</div>
+          <h2 class="section-title-white">專業團隊</h2>
+        </div>
+        
+        <div class="team-grid-4">
+          <div class="team-card-dark scale-in delay-100">
+            <div class="team-avatar"><i class="fas fa-user"></i></div>
+            <h3 class="team-name">林小慧</h3>
+            <p class="team-role">創辦人 / 資深保母</p>
+            <p class="team-desc">寵物行為訓練師認證，8年照護經驗，擅長安撫緊張的毛孩。</p>
+          </div>
+          
+          <div class="team-card-dark scale-in delay-200">
+            <div class="team-avatar"><i class="fas fa-user"></i></div>
+            <h3 class="team-name">陳大明</h3>
+            <p class="team-role">營運經理</p>
+            <p class="team-desc">動物醫療背景，負責健康管理與緊急應對，守護毛孩安全。</p>
+          </div>
+          
+          <div class="team-card-dark scale-in delay-300">
+            <div class="team-avatar"><i class="fas fa-user"></i></div>
+            <h3 class="team-name">王小美</h3>
+            <p class="team-role">資深保母</p>
+            <p class="team-desc">6年經驗，特別擅長照顧老年犬與特殊需求毛孩，細心溫柔。</p>
+          </div>
+          
+          <div class="team-card-dark scale-in delay-400">
+            <div class="team-avatar"><i class="fas fa-user"></i></div>
+            <h3 class="team-name">張阿倫</h3>
+            <p class="team-role">活動保母</p>
+            <p class="team-desc">5年經驗，精力充沛，負責帶領毛孩進行戶外活動與遊戲時間。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 客戶見證 - 卡片式 -->
+    <section class="testimonials-section">
+      <div class="container-narrow">
+        <div class="section-header-center fade-in-up">
+          <div class="section-label-dark">Testimonials</div>
+          <h2 class="section-title-dark">客戶見證</h2>
+        </div>
+        
+        <div class="testimonials-grid-3">
+          <div class="testimonial-card fade-in-up delay-100">
+            <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+            <p class="testimonial-text">「第一次把 Mochi 送來真的很緊張，但看到每天的照顧日誌和照片就放心了！保母很細心地記錄他的作息，Mochi 回家後還一直想回去玩呢！」</p>
+            <div class="testimonial-author">
+              <div class="author-avatar"><i class="fas fa-user-circle"></i></div>
+              <div>
+                <div class="author-name">Amy 與柴犬 Mochi</div>
+                <div class="author-date">2024年11月</div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="testimonial-card fade-in-up delay-200">
+            <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+            <p class="testimonial-text">「QQ 有分離焦慮症，之前很難找到願意照顧的地方。HEHE 的保母非常專業，知道如何安撫他，現在 QQ 已經是這裡的常客了！」</p>
+            <div class="testimonial-author">
+              <div class="author-avatar"><i class="fas fa-user-circle"></i></div>
+              <div>
+                <div class="author-name">Kevin 與貴賓犬 QQ</div>
+                <div class="author-date">2024年10月</div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="testimonial-card fade-in-up delay-300">
+            <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+            <p class="testimonial-text">「橘子很挑環境，沒想到在這裡住得很開心！貓咪套房很寬敞，保母也懂得如何跟貓咪相處。超級推薦給養貓的朋友！」</p>
+            <div class="testimonial-author">
+              <div class="author-avatar"><i class="fas fa-user-circle"></i></div>
+              <div>
+                <div class="author-name">Vivian 與橘貓 橘子</div>
+                <div class="author-date">2024年9月</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section - 滿版 -->
+    <section class="cta-section full-width bg-orange">
+      <div class="cta-content-center fade-in-up">
+        <h2 class="cta-title">準備好讓毛孩體驗了嗎？</h2>
+        <p class="cta-text">立即預約，給您的寵物一個溫馨舒適的假期</p>
+        <div class="cta-buttons">
+          <a href="order.html" class="btn-cta-white">立即預約</a>
+          <a href="index.html#contact" class="btn-cta-outline">聯繫我們</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="function.js"></script>
+  <script>
+    // ========== 滾動動畫觀察器 ==========
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    // 觀察所有需要動畫的元素
+    document.addEventListener('DOMContentLoaded', () => {
+      const animatedElements = document.querySelectorAll(
+        '.fade-in-up, .fade-in-left, .fade-in-right, .fade-in, .scale-in'
+      );
+      
+      animatedElements.forEach(el => {
+        observer.observe(el);
+      });
+
+      // Hero 區塊立即顯示
+      const heroElements = document.querySelectorAll('.hero-content-wrapper > *');
+      heroElements.forEach((el, index) => {
+        setTimeout(() => {
+          el.classList.add('visible');
+        }, index * 200);
+      });
+    });
+
+    // ========== 數字計數動畫 ==========
+    function animateCounter(element, target, suffix = '', duration = 2000) {
+      const start = 0;
+      const increment = target / (duration / 16);
+      let current = start;
+
+      const timer = setInterval(() => {
+        current += increment;
+        if (current >= target) {
+          element.textContent = formatNumber(target, suffix);
+          clearInterval(timer);
+        } else {
+          element.textContent = formatNumber(Math.floor(current), suffix);
+        }
+      }, 16);
+    }
+
+    function formatNumber(num, suffix = '') {
+      if (num >= 1000) {
+        return num.toLocaleString() + suffix;
+      }
+      return num.toString() + suffix;
+    }
+
+    // 觀察計數元素
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const target = parseInt(entry.target.dataset.target);
+          const suffix = entry.target.dataset.suffix || '';
+          if (!entry.target.classList.contains('counted')) {
+            entry.target.classList.add('counted');
+            animateCounter(entry.target, target, suffix);
+          }
+          counterObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const counters = document.querySelectorAll('.count-up');
+      counters.forEach(counter => {
+        counterObserver.observe(counter);
+      });
+    });
+
+    // ========== 視差滾動效果 ==========
+    let lastScrollTop = 0;
+    window.addEventListener('scroll', () => {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      const parallaxElements = document.querySelectorAll('.parallax-slow');
+      
+      parallaxElements.forEach((el, index) => {
+        const speed = 0.5;
+        const yPos = -(scrollTop * speed);
+        el.style.transform = `translateY(${yPos}px)`;
+      });
+      
+      lastScrollTop = scrollTop;
+    });
+
+    // ========== 平滑滾動 ==========
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // ========== 滑鼠跟隨效果（可選） ==========
+    document.addEventListener('mousemove', (e) => {
+      const cursor = document.querySelector('.custom-cursor');
+      if (cursor) {
+        cursor.style.left = e.clientX + 'px';
+        cursor.style.top = e.clientY + 'px';
+      }
+    });
+  </script>
+</body>
+</html>

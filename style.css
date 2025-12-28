@@ -1592,3 +1592,1077 @@ body {
       padding: 20px;
     }
   }
+
+  /* 關於我們頁面 - 切版設計 CSS */
+
+  .about-page {
+    background-color: #FFFFFF;
+    font-family: "GenSenRounded2 TW", "Noto Sans TC", sans-serif;
+  }
+  
+  /* 日系風格：更多留白和簡潔設計 */
+  .about-page section {
+    margin-bottom: 0;
+  }
+  
+  /* 通用樣式 */
+  .full-width {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  
+  .container-narrow {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+  
+  /* Section Label */
+  .section-label,
+  .section-label-dark,
+  .section-label-light {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+  
+  .section-label,
+  .section-label-light {
+    color: rgba(255, 255, 255, 0.8);
+  }
+  
+  .section-label-dark {
+    color: #999;
+  }
+  
+  /* Section Title */
+  .section-title-white,
+  .section-title-dark {
+    font-size: 48px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    margin-bottom: 40px;
+    line-height: 1.3;
+  }
+  
+  .section-title-white {
+    color: #462C16;
+  }
+  
+  .section-title-dark {
+    color: #462C16;
+  }
+  
+  .section-header-center {
+    text-align: center;
+    margin-bottom: 80px;
+    padding: 0 20px;
+  }
+  
+  .section-header-center .section-label-dark {
+    color: #B4F05A;
+    font-weight: 700;
+    letter-spacing: 4px;
+  }
+  
+  .section-header-center .section-label-light {
+    color: #B4F05A;
+    font-weight: 700;
+    letter-spacing: 4px;
+  }
+  
+  /* Hero Section - 滿版 */
+  .about-hero {
+    position: relative;
+    height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background: url(img/cover.png) center/cover no-repeat;
+    background-color: #462C16;
+  }
+  
+  .hero-bg::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(70, 44, 22, 0.4);
+    z-index: 1;
+  }
+  
+  .hero-content-wrapper {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: white;
+    max-width: 800px;
+    padding: 0 40px;
+  }
+  
+  .hero-title {
+    font-size: 64px;
+    font-weight: 900;
+    margin-bottom: 24px;
+    line-height: 1.3;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    letter-spacing: 2px;
+  }
+  
+  .hero-subtitle {
+    font-size: 18px;
+    letter-spacing: 6px;
+    margin-bottom: 24px;
+    opacity: 0.95;
+    font-weight: 600;
+  }
+  
+  .hero-description {
+    font-size: 17px;
+    opacity: 0.95;
+    letter-spacing: 1px;
+    line-height: 1.8;
+  }
+  
+  /* 品牌故事 - 左右切版 */
+  .split-section {
+    display: flex;
+    min-height: 700px;
+  }
+  
+  .split-left,
+  .split-right {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 100px 80px;
+  }
+  
+  .bg-orange {
+    background: #B4F05A;
+    color: #462C16;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .split-content {
+    max-width: 500px;
+  }
+  
+  .story-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-top: 40px;
+  }
+  
+  .stat-box {
+    text-align: center;
+    padding: 32px 24px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 16px;
+    border: 1px solid rgba(70, 44, 22, 0.1);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+  }
+  
+  .stat-box:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  }
+  
+  .stat-number {
+    color: #462C16;
+  }
+  
+  .stat-label {
+    color: #666;
+  }
+  
+  .stat-number {
+    font-size: 36px;
+    font-weight: 800;
+    margin-bottom: 8px;
+  }
+  
+  .stat-label {
+    font-size: 13px;
+    opacity: 0.9;
+  }
+  
+  .story-text {
+    font-size: 16px;
+    line-height: 2.2;
+    color: #462C16;
+    margin-bottom: 28px;
+    font-weight: 400;
+  }
+  
+  .story-text:last-child {
+    margin-bottom: 0;
+  }
+  
+  .split-right {
+    background: #FAF9F6;
+  }
+  
+  /* 服務特色 - 網格 */
+  .features-section {
+    padding: 120px 0;
+  }
+  
+  .bg-light {
+    background: #FFFFFF;
+    padding: 120px 0;
+  }
+  
+  .features-grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+  
+  .feature-box {
+    background: #FFFFFF;
+    padding: 48px 40px;
+    border-radius: 20px;
+    border: 1px solid #E8E3D8;
+    text-align: center;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .feature-box::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: #B4F05A;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s ease;
+  }
+  
+  .feature-box:hover {
+    border-color: #B4F05A;
+    box-shadow: 0 16px 40px rgba(180, 240, 90, 0.15);
+    transform: translateY(-8px);
+  }
+  
+  .feature-box:hover::before {
+    transform: scaleX(1);
+  }
+  
+  .feature-icon i {
+    font-size: 64px;
+    color: #B4F05A;
+    display: block;
+  }
+  
+  .feature-icon {
+    margin-bottom: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .feature-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: #462C16;
+    margin-bottom: 16px;
+    letter-spacing: 0.5px;
+  }
+  
+  .feature-desc {
+    font-size: 15px;
+    color: #666;
+    line-height: 2;
+  }
+  
+  /* 環境設施 - 上下切版 */
+  .facilities-section {
+    background: #FFFFFF;
+    padding: 80px 0;
+  }
+  
+  .facility-row {
+    display: flex;
+    min-height: 600px;
+  }
+  
+  .facility-row.reverse {
+    flex-direction: row-reverse;
+  }
+  
+  .facility-text-left,
+  .facility-text-right,
+  .facility-image-left,
+  .facility-image-right {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .facility-text-left,
+  .facility-text-right {
+    padding: 80px 100px;
+    background: #FFFFFF;
+  }
+  
+  .facility-content {
+    max-width: 500px;
+  }
+  
+  .facility-number {
+    font-size: 72px;
+    font-weight: 900;
+    color: #B4F05A;
+    opacity: 0.2;
+    line-height: 1;
+    margin-bottom: -20px;
+  }
+  
+  .facility-title {
+    font-size: 36px;
+    font-weight: 700;
+    color: #462C16;
+    margin-bottom: 24px;
+    letter-spacing: 1px;
+  }
+  
+  .facility-desc {
+    font-size: 16px;
+    color: #555;
+    line-height: 2.2;
+  }
+  
+  .facility-image-left,
+  .facility-image-right {
+    position: relative;
+  }
+  
+  
+  .bg-cream {
+    background: #FFF8F0;
+  }
+  
+  .bg-green {
+    background: #F0FAEB;
+  }
+  
+  .bg-blue {
+    background: #F0F9FF;
+  }
+  
+  .bg-pink {
+    background: #FEF2F2;
+  }
+  
+  .facility-icon {
+    font-size: 120px;
+  }
+  
+  .facility-icon i {
+    color: #B4F05A;
+    display: block;
+  }
+  
+  /* 團隊介紹 - 滿版深色 */
+  .team-section {
+    padding: 120px 0;
+  }
+  
+  .bg-dark {
+    background: #462C16;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .team-avatar i {
+    font-size: 40px;
+    color: #B4F05A;
+    display: block;
+  }
+  
+  .team-grid-4 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+  }
+  
+  .team-card-dark {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 32px 24px;
+    text-align: center;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+  }
+  
+  .team-card-dark:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: #B4F05A;
+    transform: translateY(-8px);
+    box-shadow: 0 12px 40px rgba(180, 240, 90, 0.2);
+  }
+  
+  .team-avatar {
+    width: 80px;
+    height: 80px;
+    background: rgba(180, 240, 90, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    border: 2px solid rgba(180, 240, 90, 0.4);
+  }
+  
+  .team-name {
+    font-size: 20px;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin-bottom: 10px;
+    letter-spacing: 0.5px;
+  }
+  
+  .team-role {
+    font-size: 14px;
+    color: #B4F05A;
+    font-weight: 600;
+    margin-bottom: 18px;
+    letter-spacing: 1px;
+  }
+  
+  .team-desc {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.9;
+  }
+  
+  /* 客戶見證 */
+  .testimonials-section {
+    padding: 120px 0;
+    background: #FAF9F6;
+  }
+  
+  .testimonials-grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+  
+  .testimonial-card {
+    background: #FFFFFF;
+    border-radius: 16px;
+    padding: 32px;
+    border: 1px solid #F5F0E8;
+    transition: all 0.3s ease;
+  }
+  
+  .testimonial-card:hover {
+    border-color: #B4F05A;
+    box-shadow: 0 16px 40px rgba(180, 240, 90, 0.15);
+    transform: translateY(-8px);
+  }
+  
+  .quote-icon {
+    font-size: 32px;
+    margin-bottom: 20px;
+    opacity: 0.6;
+  }
+  
+  .testimonial-text {
+    font-size: 15px;
+    color: #555;
+    line-height: 2.2;
+    margin-bottom: 28px;
+  }
+  
+  .testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-top: 20px;
+    border-top: 1px solid #F5F0E8;
+  }
+  
+  .author-avatar {
+    width: 48px;
+    height: 48px;
+    background: #F0FAEB;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    border: 2px solid #B4F05A;
+    flex-shrink: 0;
+  }
+  
+  .author-avatar i {
+    color: #B4F05A;
+  }
+  
+  .quote-icon i {
+    color: #B4F05A;
+    font-size: 32px;
+  }
+  
+  .author-name {
+    font-size: 14px;
+    font-weight: 700;
+    color: #462C16;
+    margin-bottom: 4px;
+  }
+  
+  .author-date {
+    font-size: 12px;
+    color: #999;
+  }
+  
+  /* CTA Section - 滿版 */
+  .cta-section {
+    padding: 120px 40px;
+    position: relative;
+    overflow: hidden;
+    background: #FE5503;
+  }
+  
+  .cta-content-center {
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .cta-title {
+    font-size: 48px;
+    font-weight: 800;
+    color: #FFFFFF;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .cta-text {
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.95);
+    margin-bottom: 48px;
+    letter-spacing: 0.5px;
+  }
+  
+  .cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .btn-cta-white,
+  .btn-cta-outline {
+    padding: 16px 48px;
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-family: "GenSenRounded2 TW";
+  }
+  
+  .btn-cta-white {
+    background: #FFFFFF;
+    color: #FE5503;
+    border: 2px solid #FFFFFF;
+  }
+  
+  .btn-cta-white:hover {
+    background: #FFFFFF;
+    color: #462C16;
+    border-color: #FFFFFF;
+    transform: translateY(-4px);
+    box-shadow: 0 16px 40px rgba(255, 255, 255, 0.3);
+  }
+  
+  .btn-cta-outline {
+    background: transparent;
+    color: #FFFFFF;
+    border: 2px solid rgba(255, 255, 255, 0.8);
+  }
+  
+  .btn-cta-outline:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: #FFFFFF;
+    border-color: #FFFFFF;
+    transform: translateY(-4px);
+    box-shadow: 0 16px 40px rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+  }
+  
+  /* 響應式設計 */
+  @media (max-width: 1024px) {
+    .features-grid-3 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .team-grid-4 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .testimonials-grid-3 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .container-narrow {
+      padding: 0 24px;
+    }
+    
+    /* Hero */
+    .about-hero {
+      height: 500px;
+    }
+    
+    .hero-title {
+      font-size: 42px;
+    }
+    
+    .hero-subtitle {
+      font-size: 16px;
+    }
+    
+    .hero-description {
+      font-size: 15px;
+    }
+    
+    /* Split Section */
+    .split-section {
+      flex-direction: column;
+      min-height: auto;
+    }
+    
+    .split-left,
+    .split-right {
+      padding: 60px 32px;
+    }
+    
+    .story-stats-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+    
+    /* Features */
+    .features-section {
+      padding: 60px 0;
+    }
+    
+    .features-grid-3 {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+    
+    .section-title-white,
+    .section-title-dark {
+      font-size: 32px;
+    }
+    
+    /* Facilities */
+    .facility-row,
+    .facility-row.reverse {
+      flex-direction: column;
+      min-height: auto;
+    }
+    
+    .facility-text-left,
+    .facility-text-right {
+      padding: 40px 32px;
+    }
+    
+    .facility-image-left,
+    .facility-image-right {
+      min-height: 300px;
+    }
+    
+    .facility-title {
+      font-size: 24px;
+    }
+    
+    .facility-emoji {
+      font-size: 80px;
+    }
+    
+    /* Team */
+    .team-section {
+      padding: 60px 0;
+    }
+    
+    .team-grid-4 {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+    
+    /* Testimonials */
+    .testimonials-section {
+      padding: 60px 0;
+    }
+    
+    .testimonials-grid-3 {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+    
+    /* CTA */
+    .cta-section {
+      padding: 60px 24px;
+    }
+    
+    .cta-title {
+      font-size: 32px;
+    }
+    
+    .cta-text {
+      font-size: 16px;
+    }
+    
+    .cta-buttons {
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .btn-cta-white,
+    .btn-cta-outline {
+      width: 100%;
+      max-width: 300px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .hero-title {
+      font-size: 32px;
+    }
+    
+    .section-title-white,
+    .section-title-dark {
+      font-size: 28px;
+    }
+    
+    .facility-title {
+      font-size: 20px;
+    }
+    
+    .cta-title {
+      font-size: 26px;
+    }
+  }
+
+  /* ========== 動態效果 CSS ========== */
+  
+  /* 滾動動畫基礎類別 */
+  .fade-in-up {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  
+  .fade-in-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .fade-in-left {
+    opacity: 0;
+    transform: translateX(-40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  
+  .fade-in-left.visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  
+  .fade-in-right {
+    opacity: 0;
+    transform: translateX(40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  
+  .fade-in-right.visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  
+  .fade-in {
+    opacity: 0;
+    transition: opacity 1s ease;
+  }
+  
+  .fade-in.visible {
+    opacity: 1;
+  }
+  
+  .scale-in {
+    opacity: 0;
+    transform: scale(0.8);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  
+  .scale-in.visible {
+    opacity: 1;
+    transform: scale(1);
+  }
+  
+  /* 延遲動畫 */
+  .delay-100 { transition-delay: 0.1s; }
+  .delay-200 { transition-delay: 0.2s; }
+  .delay-300 { transition-delay: 0.3s; }
+  .delay-400 { transition-delay: 0.4s; }
+  .delay-500 { transition-delay: 0.5s; }
+  .delay-600 { transition-delay: 0.6s; }
+  
+  /* Hero 區塊動畫 */
+  .hero-content-wrapper > * {
+    opacity: 0;
+    animation: fadeInUpHero 1s ease forwards;
+  }
+  
+  .hero-title {
+    animation-delay: 0.2s;
+  }
+  
+  .hero-subtitle {
+    animation-delay: 0.4s;
+  }
+  
+  .hero-description {
+    animation-delay: 0.6s;
+  }
+  
+  @keyframes fadeInUpHero {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* 背景動畫 */
+  .hero-bg::before,
+  .hero-bg::after {
+    animation: float 20s ease-in-out infinite;
+  }
+  
+  .hero-bg::after {
+    animation-delay: -10s;
+  }
+  
+  @keyframes float {
+    0%, 100% {
+      transform: translate(0, 0) scale(1);
+    }
+    50% {
+      transform: translate(30px, -30px) scale(1.1);
+    }
+  }
+  
+  /* 統計數字動畫 */
+  .stat-number {
+    transition: transform 0.3s ease;
+  }
+  
+  .stat-box:hover .stat-number {
+    transform: scale(1.1);
+  }
+  
+  /* 圖標動畫 */
+  .feature-icon {
+    display: inline-block;
+    transition: transform 0.3s ease;
+    animation: iconFloat 3s ease-in-out infinite;
+  }
+  
+  .feature-box:hover .feature-icon {
+    transform: scale(1.2) rotate(5deg);
+    animation: iconBounce 0.6s ease;
+  }
+  
+  @keyframes iconFloat {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+  
+  @keyframes iconBounce {
+    0%, 100% {
+      transform: scale(1.2) rotate(5deg) translateY(0);
+    }
+    50% {
+      transform: scale(1.2) rotate(5deg) translateY(-15px);
+    }
+  }
+  
+  /* 卡片交錯動畫 */
+  .feature-box:nth-child(1) { transition-delay: 0s; }
+  .feature-box:nth-child(2) { transition-delay: 0.1s; }
+  .feature-box:nth-child(3) { transition-delay: 0.2s; }
+  .feature-box:nth-child(4) { transition-delay: 0.3s; }
+  .feature-box:nth-child(5) { transition-delay: 0.4s; }
+  .feature-box:nth-child(6) { transition-delay: 0.5s; }
+  
+  /* 設施區塊動畫 */
+  .facility-icon {
+    display: inline-block;
+    animation: iconFloat 4s ease-in-out infinite;
+  }
+  
+  .facility-row:hover .facility-icon {
+    animation: iconSpin 0.8s ease;
+  }
+  
+  @keyframes iconFloat {
+    0%, 100% {
+      transform: translateY(0) rotate(0deg);
+    }
+    25% {
+      transform: translateY(-15px) rotate(5deg);
+    }
+    75% {
+      transform: translateY(-15px) rotate(-5deg);
+    }
+  }
+  
+  @keyframes iconSpin {
+    0% {
+      transform: rotate(0deg) scale(1);
+    }
+    50% {
+      transform: rotate(180deg) scale(1.2);
+    }
+    100% {
+      transform: rotate(360deg) scale(1);
+    }
+  }
+  
+  /* 團隊卡片動畫 */
+  .team-avatar {
+    transition: transform 0.3s ease;
+  }
+  
+  .team-card-dark:hover .team-avatar {
+    transform: scale(1.1) rotate(5deg);
+  }
+  
+  /* 見證卡片動畫 */
+  .testimonial-card {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .testimonial-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(180, 240, 90, 0.1);
+    transition: left 0.5s ease;
+  }
+  
+  .testimonial-card:hover::before {
+    left: 100%;
+  }
+  
+  /* 按鈕脈衝動畫 */
+  .btn-cta-white,
+  .btn-cta-outline {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .btn-cta-white::before,
+  .btn-cta-outline::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+  }
+  
+  .btn-cta-white:hover::before,
+  .btn-cta-outline:hover::before {
+    width: 300px;
+    height: 300px;
+  }
+  
+  /* 視差滾動效果 */
+  .parallax-slow {
+    transition: transform 0.3s ease-out;
+  }
+  
+  /* 數字計數動畫 */
+  .count-up {
+    display: inline-block;
+  }
+  
+  /* 閃爍動畫 */
+  @keyframes shimmer {
+    0% {
+      background-position: -1000px 0;
+    }
+    100% {
+      background-position: 1000px 0;
+    }
+  }
+  
+  
+  /* 彈跳動畫 */
+  @keyframes bounce {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+  
+  .bounce-on-scroll {
+    animation: bounce 2s ease-in-out infinite;
+  }
+  
+  
+  /* 響應式動畫調整 */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
