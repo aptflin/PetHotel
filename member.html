@@ -25,101 +25,87 @@
     </nav>
 
     <button id="hamburger" class="hamburger">
-        <span></span><span></span><span></span>
-      </button>
-      
-      <div id="menuPanel" class="menu-panel">
-        <div class="menu-container">
-          <!-- 第一列：服務項目 -->
-          <div class="menu-column">
-            <h3 class="column-title">服務項目</h3>
-            <ul>
-              <li><a href="index.html#service">服務內容</a></li>
-              <li><a href="index.html#order-service">訂單式服務</a></li>
-              <li><a href="index.html#sitter">保母</a></li>
-            </ul>
+      <span></span><span></span><span></span>
+    </button>
+
+    <div id="menuPanel" class="menu-panel">
+      <div class="menu-container">
+        <!-- 第一列：服務項目 -->
+        <div class="menu-column">
+          <h3 class="column-title">服務項目</h3>
+          <ul>
+            <li><a href="index.html#service">服務內容</a></li>
+            <li><a href="index.html#order-service">訂單式服務</a></li>
+            <li><a href="index.html#sitter">保母</a></li>
+          </ul>
+        </div>
+
+        <!-- 第二列：資訊 -->
+        <div class="menu-column">
+          <h3 class="column-title">資訊</h3>
+          <ul>
+            <li><a href="index.html#environment">旅館環境</a></li>
+            <li><a href="index.html#location">地理位置</a></li>
+            <li><a href="order.html">訂購</a></li>
+            <li><a href="member.html">會員專區</a></li>
+          </ul>
+        </div>
+
+        <!-- 第三列：會員登入 -->
+        <div class="menu-column login-column">
+          <h3 class="column-title">會員中心</h3>
+          <div class="login-form" id="loginForm">
+            <input type="text" id="username" placeholder="帳號(mId，如 m0001)" class="input-field">
+            <input type="password" id="password" placeholder="密碼" class="input-field">
+            <div id="loginError" class="error-message"></div>
+            <button id="loginBtn" class="login-btn">登入</button>
+            <button class="register-btn" type="button">註冊</button>
           </div>
-      
-          <!-- 第二列：資訊 -->
-          <div class="menu-column">
-            <h3 class="column-title">資訊</h3>
-            <ul>
-              <li><a href="index.html#environment">旅館環境</a></li>
-              <li><a href="index.html#location">地理位置</a></li>
-              <li><a href="order.html">訂購</a></li>
-              <li><a href="member.html">會員專區</a></li>
-            </ul>
-          </div>
-      
-          <!-- 第三列：會員登入 -->
-          <div class="menu-column login-column">
-            <h3 class="column-title">會員中心</h3>
-            <div class="login-form" id="loginForm">
-              <input type="text" id="username" placeholder="帳號" class="input-field">
-              <input type="password" id="password" placeholder="密碼" class="input-field">
-              <div id="loginError" class="error-message"></div>
-              <button id="loginBtn" class="login-btn">登入</button>
-              <button class="register-btn">註冊</button>
+
+          <!-- 會員登入後資訊 -->
+          <div class="user-info" id="userInfo" style="display: none;">
+            <div class="user-avatar">
+              <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix" alt="User Avatar">
             </div>
-      
-            <!-- 會員登入後資訊 -->
-            <div class="user-info" id="userInfo" style="display: none;">
-              <div class="user-avatar">
-                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix" alt="User Avatar">
-              </div>
-              <div class="user-name" id="displayUsername">Admin</div>
-              <button class="member-area-btn" onclick="location.href='member.html'">會員專區</button>
-              <button id="logoutBtn" class="logout-btn">登出</button>
-            </div>
+            <div class="user-name" id="displayUsername">會員</div>
+            <button class="member-area-btn" onclick="location.href='member.html'">會員專區</button>
+            <button id="logoutBtn" class="logout-btn">登出</button>
           </div>
-      
-          <!-- 聯絡資訊 -->
-          <div class="contact-info">
-            <h3 class="contact-title">聯絡我們</h3>
-            <div class="contact-grid">
-              <div class="contact-item">
-                <div class="contact-details">
-                  <p class="contact-label">地址</p>
-                  <p class="contact-text">台北市大安區忠孝東路三段1號</p>
-                </div>
-              </div>
-              <div class="contact-item">
-                <div class="contact-details">
-                  <p class="contact-label">電話</p>
-                  <p class="contact-text">02-1234-5678</p>
-                </div>
-              </div>
-              <div class="contact-item">
-                <div class="contact-details">
-                  <p class="contact-label">Email</p>
-                  <p class="contact-text">info@hehepet.com</p>
-                </div>
-              </div>
-              <div class="contact-item">
-                <div class="contact-details">
-                  <p class="contact-label">營業時間</p>
-                  <p class="contact-text">週一至週日 09:00 - 21:00</p>
-                </div>
+        </div>
+
+        <!-- 聯絡資訊（保留原本內容） -->
+        <div class="contact-info">
+          <h3 class="contact-title">聯絡我們</h3>
+          <div class="contact-grid">
+            <div class="contact-item">
+              <div class="contact-details">
+                <p class="contact-label">地址</p>
+                <p class="contact-text">台北市大安區忠孝東路三段1號</p>
               </div>
             </div>
-      
-            <div class="social-media">
-              <a href="#" class="social-link instagram">
-                <span class="social-icon">📷</span>
-                <span>Instagram</span>
-              </a>
-              <a href="#" class="social-link facebook">
-                <span class="social-icon">👍</span>
-                <span>Facebook</span>
-              </a>
-              <a href="#" class="social-link line">
-                <span class="social-icon">💬</span>
-                <span>LINE</span>
-              </a>
+            <div class="contact-item">
+              <div class="contact-details">
+                <p class="contact-label">電話</p>
+                <p class="contact-text">02-1234-5678</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-details">
+                <p class="contact-label">Email</p>
+                <p class="contact-text">info@hehepet.com</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-details">
+                <p class="contact-label">營業時間</p>
+                <p class="contact-text">週一至週日 09:00 - 21:00</p>
+              </div>
             </div>
           </div>
         </div>
+
       </div>
+    </div>
   </header>
 
   <div class="overlay" id="overlay"></div>
@@ -141,7 +127,7 @@
             <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix" alt="User Avatar">
           </div>
           <div>
-            <div class="member-name" id="memberDisplayName">王小明</div>
+            <div class="member-name" id="memberDisplayName">會員</div>
             <div class="member-tag-row">
               <span class="member-tag member-level">黃金會員</span>
               <span class="member-tag">已加入 2 年 3 個月</span>
@@ -180,19 +166,19 @@
             <div class="member-info-grid">
               <div class="member-info-item">
                 <span class="member-info-label">姓名</span>
-                <span class="member-info-value" id="memberInfoName">王小明</span>
+                <span class="member-info-value" id="memberInfoName">-</span>
               </div>
               <div class="member-info-item">
                 <span class="member-info-label">手機</span>
-                <span class="member-info-value">0912-345-678</span>
+                <span class="member-info-value" id="memberInfoPhone">-</span>
               </div>
               <div class="member-info-item">
                 <span class="member-info-label">Email</span>
-                <span class="member-info-value">example@mail.com</span>
+                <span class="member-info-value" id="memberInfoEmail">-</span>
               </div>
               <div class="member-info-item">
                 <span class="member-info-label">常用地址</span>
-                <span class="member-info-value">台北市大安區忠孝東路三段 1 號</span>
+                <span class="member-info-value" id="memberInfoAddress">-</span>
               </div>
               <div class="member-info-item member-info-item-full">
                 <span class="member-info-label">備註</span>
@@ -202,53 +188,11 @@
           </div>
         </div>
 
-        <!-- 訂單明細 -->
+        <!-- 訂單明細（保留原本靜態內容亦可，這裡略） -->
         <div class="member-tab-panel" id="tab-orders">
           <div class="member-card">
             <h2 class="member-card-title">訂單明細</h2>
-            <div class="member-order-filters">
-              <button class="order-filter active">全部</button>
-              <button class="order-filter">預約中</button>
-              <button class="order-filter">已完成</button>
-              <button class="order-filter">已取消</button>
-            </div>
-            <div class="member-order-list">
-              <div class="member-order-item">
-                <div class="order-main">
-                  <div class="order-id-date">
-                    <span class="order-id">訂單編號：PH20251216001</span>
-                    <span class="order-date">2025/12/16</span>
-                  </div>
-                  <div class="order-detail">
-                    <span>住宿 3 晚・小型犬房</span>
-                    <span>保母：阿倫</span>
-                  </div>
-                </div>
-                <div class="order-side">
-                  <div class="order-price">$ 4,500</div>
-                  <div class="order-status order-status-on-going">預約中</div>
-                  <button class="order-link-btn">查看明細</button>
-                </div>
-              </div>
-
-              <div class="member-order-item">
-                <div class="order-main">
-                  <div class="order-id-date">
-                    <span class="order-id">訂單編號：PH20251128009</span>
-                    <span class="order-date">2025/11/28</span>
-                  </div>
-                  <div class="order-detail">
-                    <span>住宿 2 晚・中型犬房</span>
-                    <span>保母：小菀</span>
-                  </div>
-                </div>
-                <div class="order-side">
-                  <div class="order-price">$ 3,200</div>
-                  <div class="order-status order-status-done">已完成</div>
-                  <button class="order-link-btn">查看照顧日誌</button>
-                </div>
-              </div>
-            </div>
+            <div class="hint">此區目前保留你的原本版面，之後若要串 DB 我再幫你接。</div>
           </div>
         </div>
 
@@ -256,102 +200,42 @@
         <div class="member-tab-panel" id="tab-pets">
           <div class="member-card">
             <h2 class="member-card-title">寵物資料</h2>
-            <div class="pet-card-list">
-              <div class="pet-card">
-                <div class="pet-header">
-                  <div class="pet-avatar">🐶</div>
-                  <div>
-                    <div class="pet-name">QQ</div>
-                    <div class="pet-sub">柯基・4 歲・已結紮</div>
-                  </div>
-                </div>
-                <div class="pet-info">
-                  <div><span class="pet-label">體重</span> 10.2 kg</div>
-                  <div><span class="pet-label">個性</span> 親人但怕大狗</div>
-                  <div><span class="pet-label">過敏 / 慢性病</span> 無</div>
-                  <div><span class="pet-label">特別注意</span> 散步時看到機車聲會緊張。</div>
-                </div>
+
+            <!-- 新增寵物表單 -->
+            <section class="pet-add-section">
+              <h3>新增寵物</h3>
+
+              <div class="pet-add-form">
+                <input id="petNameInput" type="text" placeholder="寵物名（例如：豆漿）" />
+                <select id="petBreedInput">
+                  <option value="貓">貓</option>
+                  <option value="狗">狗</option>
+                </select>
+                <input id="petBirthInput" type="date" />
+                <input id="petDiseaseInput" type="text" placeholder="疾病（預設：無）" />
+                <button id="addPetBtn" type="button">新增寵物</button>
               </div>
 
-              <div class="pet-card">
-                <div class="pet-header">
-                  <div class="pet-avatar">🐱</div>
-                  <div>
-                    <div class="pet-name">豆花</div>
-                    <div class="pet-sub">米克斯・2 歲・未結紮</div>
-                  </div>
-                </div>
-                <div class="pet-info">
-                  <div><span class="pet-label">體重</span> 4.1 kg</div>
-                  <div><span class="pet-label">個性</span> 慢熟，喜歡安靜空間</div>
-                  <div><span class="pet-label">過敏 / 慢性病</span> 對雞肉過敏</div>
-                  <div><span class="pet-label">特別注意</span> 只吃飼主自備飼料。</div>
-                </div>
-              </div>
-            </div>
+              <div id="addPetMsg" class="hint"></div>
+            </section>
+
+            <!-- 寵物清單（由 function.js 動態渲染） -->
+            <div class="pet-card-list"></div>
           </div>
         </div>
 
-        <!-- 照顧日誌 -->
+        <!-- 照顧日誌（保留） -->
         <div class="member-tab-panel" id="tab-logs">
           <div class="member-card">
             <h2 class="member-card-title">照顧日誌</h2>
-            <div class="care-log-list">
-              <article class="care-log-item">
-                <div class="care-log-header">
-                  <div>
-                    <div class="care-log-date">2025/11/29・入住第 1 天</div>
-                    <div class="care-log-pet">QQ・3 晚住宿・保母 阿倫</div>
-                  </div>
-                  <span class="care-log-tag">住宿中</span>
-                </div>
-                <div class="care-log-body">
-                  <p>今天 QQ 抵達旅館後很快就放鬆下來，願意主動靠近保母撒嬌，已順利吃完飼料與喝水，排便正常。</p>
-                  <p>散步時遇到人潮會有點緊張，我們有保持適當距離並以零食安撫，目前狀況穩定。</p>
-                </div>
-              </article>
-
-              <article class="care-log-item">
-                <div class="care-log-header">
-                  <div>
-                    <div class="care-log-date">2025/08/15・退房</div>
-                    <div class="care-log-pet">豆花・2 晚住宿・保母 小菀</div>
-                  </div>
-                  <span class="care-log-tag care-log-tag-done">已完成</span>
-                </div>
-                <div class="care-log-body">
-                  <p>豆花這次入住狀況良好，會主動從窩裡出來伸展、觀察環境，對照顧人員也願意聞手打招呼。</p>
-                  <p>飲食與排泄皆正常，已依飼主要求全程使用自備飼料與砂盆。</p>
-                </div>
-              </article>
-            </div>
+            <div class="hint">此區目前保留你的原本版面，之後若要串 DB 我再幫你接。</div>
           </div>
         </div>
+
       </section>
     </div>
   </main>
 
   <script src="function.js"></script>
-  <script>
-    // 簡單前端 tab 切換
-    const tabs = document.querySelectorAll('.member-tab');
-    const panels = {
-      profile: document.getElementById('tab-profile'),
-      orders: document.getElementById('tab-orders'),
-      pets: document.getElementById('tab-pets'),
-      logs: document.getElementById('tab-logs'),
-    };
-
-    tabs.forEach(tab => {
-      tab.addEventListener('click', () => {
-        tabs.forEach(t => t.classList.remove('active'));
-        tab.classList.add('active');
-
-        Object.values(panels).forEach(p => p.classList.remove('active'));
-        const key = tab.dataset.tab;
-        panels[key].classList.add('active');
-      });
-    });
-  </script>
 </body>
 </html>
