@@ -368,6 +368,64 @@ body {
     color: #999;
 }
 
+/* Order page: pet/date selection styling */
+.order-selection {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  margin-bottom: 20px;
+}
+.order-selection .field {
+  flex: 1 1 220px;
+}
+.order-selection .field--small {
+  flex: 1 1 180px;
+}
+.order-selection .field--nights {
+  flex: 0 0 160px;
+}
+.order-selection label {
+  display: block;
+  font-size: 14px;
+  color: #462C16;
+  margin-bottom: 8px;
+  font-weight: 700;
+  font-family: "GenSenRounded2 TW";
+}
+.nights-display {
+  padding: 10px;
+  background: #fff;
+  border: 1px solid #e5e5e5;
+  border-radius: 8px;
+  color: #462C16;
+  text-align: center;
+}
+
+/* Pet block: full-width row and required indicator */
+.pet-block {
+  margin-bottom: 18px;
+}
+.pet-block label {
+  display: block;
+  font-size: 16px;
+  color: #462C16;
+  margin-bottom: 8px;
+  font-weight: 800;
+}
+.pet-block .required {
+  color: #ff6600;
+  margin-left: 6px;
+}
+.field-error {
+  color: #ff3b30;
+  font-size: 13px;
+  margin-top: 6px;
+}
+.input-error {
+  outline: 2px solid rgba(255,102,0,0.2);
+}
+
 .login-btn,
 .register-btn {
     width: 100%;
@@ -402,10 +460,7 @@ body {
 }
 
 
-.contact-info {
-    grid-column: 1 / 4;   /* 占滿三欄 */
-}
-
+/* 聯絡我們區塊的標題使用 column-title 樣式，但保留 contact-title 作為備用 */
 .contact-title {
     font-size: 30px;
     font-weight: 700;
@@ -417,25 +472,11 @@ body {
     padding-left: 22px;
 }
 
-/* 標題前的綠點 */
-.contact-title::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background: #B4F05A;
-    border: 1px solid #462C16;
-}
-
-/* 聯絡資訊 - 橫向排列 */
-.contact-grid {
+/* 聯絡資訊 - 在 menu-column 中改為垂直排列 */
+.menu-column .contact-grid {
     display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
+    flex-direction: column;
+    gap: 12px;
     max-width: 100%;
 }
 
@@ -485,7 +526,7 @@ body {
     display: flex;
     justify-content: flex-start;
     margin-top: 15px;
-    flex-wrap: wrap;
+    flex-direction: column;
     column-gap: 18px;
     row-gap: 10px;
 }
@@ -503,14 +544,10 @@ body {
     transition: all 0.3s ease;
 }
 
-.social-icon {
-    font-size: 20px;
-    line-height: 1;
-}
-
 /* Instagram 樣式 */
 .social-link.instagram {
     border: 0.7px, solid, #462C16;
+    padding: 10px;
     color: #462C16;
 }
 
@@ -523,6 +560,7 @@ body {
 /* Facebook 樣式 */
 .social-link.facebook {
     border: 0.7px, solid, #462C16;
+    padding: 10px;
     color: #462C16;
 }
 
@@ -535,6 +573,7 @@ body {
 /* LINE 樣式 */
 .social-link.line {
     border: 0.7px, solid, #462C16;
+    padding: 10px;
     color: #462C16;
 }
 
@@ -542,6 +581,12 @@ body {
     transform: scaleX(1.1);
     background: #1F95EE;
     color: white;
+}
+
+/* 移除社群按鈕底下的橘色下劃線（覆寫 .menu-column a::after） */
+.menu-column .social-link::after,
+.menu-column .social-link:hover::after {
+  display: none;
 }
 
 

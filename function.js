@@ -21,6 +21,14 @@ function toggleMenu(forceOpen) {
 if (hamburger) hamburger.addEventListener("click", () => toggleMenu());
 if (overlay) overlay.addEventListener("click", () => toggleMenu(false));
 
+// 當選單內的連結被點擊時，關閉漢堡選單（不阻止原本的導向行為）
+document.querySelectorAll('#menuPanel a').forEach(link => {
+  link.addEventListener('click', () => {
+    // 使用短延遲以確保在單頁平滑滾動前先收起選單（UX 上較順）
+    setTimeout(() => toggleMenu(false), 50);
+  });
+});
+
 /* =========================
  *  Login Elements
  * ========================= */
@@ -50,12 +58,134 @@ let orderData =
     nights: null,
     serviceId: null,
     sitterId: null,
+    petId: null,
+    checkin: null,
+    checkout: null,
   };
 
 function saveState() {
   localStorage.setItem("isLoggedIn", isLoggedIn ? "true" : "false");
   localStorage.setItem("orderData", JSON.stringify(orderData));
 }
+
+// ========== Order: load pets into select & bind date/pet controls ==========
+async function loadPetsIntoSelect() {
+  const petSelect = document.getElementById('petSelect');
+  if (!petSelect) return;
+
+  // clear current
+  petSelect.innerHTML = '<option value="">載入中...</option>';
+
+  const mId = localStorage.getItem('mId');
+  if (!mId) {
+    petSelect.innerHTML = '<option value="">請先登入以載入寵物</option>';
+    return;
+  }
+
+  try {
+    const res = await fetch(`/api/pets?mId=${encodeURIComponent(mId)}`);
+    const text = await res.text();
+    const data = text ? JSON.parse(text) : null;
+    if (!res.ok || !data || !data.ok) throw new Error((data && data.message) || `API ${res.status}`);
+
+    const pets = data.pets || [];
+    if (!pets.length) {
+      petSelect.innerHTML = '<option value="">尚未新增寵物</option>';
+      return;
+    }
+
+    petSelect.innerHTML = '<option value="">請選擇寵物</option>' + pets.map(p => `<option value="${p.pId}">${p.name} (${p.breed})</option>`).join('');
+
+    // 如果 orderData.petId 有值，選回原本選擇
+    if (orderData.petId) petSelect.value = orderData.petId;
+  } catch (e) {
+    console.error('Failed to load pets for order:', e);
+    petSelect.innerHTML = '<option value="">載入失敗，稍後再試</option>';
+  }
+}
+
+function computeNights(checkin, checkout) {
+  if (!checkin || !checkout) return null;
+  const a = new Date(checkin);
+  const b = new Date(checkout);
+  const diff = Math.ceil((b - a) / (1000 * 60 * 60 * 24));
+  return diff > 0 ? diff : null;
+}
+
+function bindOrderControls() {
+  const petSelect = document.getElementById('petSelect');
+  const checkinDate = document.getElementById('checkinDate');
+  const checkoutDate = document.getElementById('checkoutDate');
+  const nightsDisplay = document.getElementById('nightsDisplay');
+  const petSelectError = document.getElementById('petSelectError');
+
+  if (petSelect) {
+    petSelect.addEventListener('change', () => {
+      orderData.petId = petSelect.value || null;
+      // clear error state when user picks a pet
+      petSelect.classList.remove('input-error');
+      if (petSelectError) petSelectError.style.display = orderData.petId ? 'none' : 'block';
+      saveState();
+    });
+    // populate initial value if any
+    if (orderData.petId) petSelect.value = orderData.petId;
+  }
+
+  function updateDates() {
+    const ci = checkinDate ? checkinDate.value : null;
+    const co = checkoutDate ? checkoutDate.value : null;
+    orderData.checkin = ci || null;
+    orderData.checkout = co || null;
+    orderData.nights = computeNights(ci, co);
+    if (nightsDisplay) nightsDisplay.textContent = orderData.nights ? `${orderData.nights} 晚` : '-';
+    saveState();
+  }
+
+  if (checkinDate) {
+    checkinDate.addEventListener('change', updateDates);
+    if (orderData.checkin) checkinDate.value = orderData.checkin;
+  }
+
+  if (checkoutDate) {
+    checkoutDate.addEventListener('change', updateDates);
+    if (orderData.checkout) checkoutDate.value = orderData.checkout;
+  }
+
+  // initialize nights display
+  if (nightsDisplay) nightsDisplay.textContent = orderData.nights ? `${orderData.nights} 晚` : '-';
+}
+
+// Attempt to load controls when DOM is ready
+document.addEventListener('DOMContentLoaded', () => {
+  loadPetsIntoSelect();
+  bindOrderControls();
+});
+
+// Submit validation: require a pet selection before allowing order submission
+document.addEventListener('DOMContentLoaded', () => {
+  const submitBtn = document.getElementById('submitOrderBtn');
+  const petSelect = document.getElementById('petSelect');
+  const petSelectError = document.getElementById('petSelectError');
+  if (submitBtn) {
+    submitBtn.addEventListener('click', (e) => {
+      // refresh orderData.petId from DOM in case user hasn't triggered change
+      const selectedPet = petSelect ? petSelect.value : (orderData.petId || '');
+      if (!selectedPet) {
+        e.preventDefault();
+        if (petSelect) petSelect.classList.add('input-error');
+        if (petSelectError) petSelectError.style.display = 'block';
+        alert('請先選擇一隻寵物');
+        return;
+      }
+
+      // proceed: here you could build the order payload or show order summary
+      // For now, just save state and log
+      orderData.petId = selectedPet;
+      saveState();
+      console.log('Order ready', orderData);
+    });
+  }
+});
 
 function clearLoginError() {
   if (usernameInput) usernameInput.classList.remove("input-error");
@@ -72,13 +202,15 @@ function clearLoginError() {
 function updateOrderView() {
   // order.html：未登入/已登入切換
   if (orderGuestView && orderMemberView) {
-    if (isLoggedIn) {
+    orderGuestView.style.display = "none";
+    orderMemberView.style.display = "block";
+    /*if (isLoggedIn) {
       orderGuestView.style.display = "none";
       orderMemberView.style.display = "block";
     } else {
       orderGuestView.style.display = "block";
       orderMemberView.style.display = "none";
-    }
+    }*/
   }
 
   // Floating cart：非 order.html 且已登入且有選天數才顯示
@@ -201,8 +333,22 @@ if (loginBtn) {
         body: JSON.stringify({ username, password }),
       });
 
-      const data = await res.json();
-      if (!data.ok) throw new Error(data.message || "帳號或密碼錯誤");
+      // 先以 text 取得回應，避免空回應導致 res.json() 拋錯
+      const text = await res.text();
+      let data = null;
+      try {
+        data = text ? JSON.parse(text) : null;
+      } catch (err) {
+        console.error('Failed to parse /api/login response as JSON:', err, 'responseText:', text);
+        throw new Error('伺服器回應不是有效的 JSON，請檢查後端。');
+      }
+
+      if (!res.ok) {
+        const msg = (data && data.message) ? data.message : `伺服器回應 ${res.status}`;
+        throw new Error(msg);
+      }
+
+      if (!data || !data.ok) throw new Error((data && data.message) || '帳號或密碼錯誤');
 
       isLoggedIn = true;
       localStorage.setItem("isLoggedIn", "true");
