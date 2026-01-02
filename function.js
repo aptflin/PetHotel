@@ -400,4 +400,33 @@ if (floatingCart) {
 
 // Initialize
 initOrder();
+
+// Order Filter Logic (Member Page)
+function initOrderFilters() {
+  const filters = document.querySelectorAll(".order-filter");
+  const items = document.querySelectorAll(".member-order-item");
+
+  if (filters.length === 0 || items.length === 0) return;
+
+  filters.forEach(btn => {
+    btn.addEventListener("click", () => {
+      // Update active state
+      filters.forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+
+      const status = btn.dataset.status;
+
+      // Filter items
+      items.forEach(item => {
+        if (status === "all" || item.dataset.status === status) {
+          item.style.display = "flex"; // Assuming flex layout based on CSS classes
+        } else {
+          item.style.display = "none";
+        }
+      });
+    });
+  });
+}
+
+initOrderFilters();
 // End of Order Logic

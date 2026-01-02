@@ -207,45 +207,84 @@
           <div class="member-card">
             <h2 class="member-card-title">訂單明細</h2>
             <div class="member-order-filters">
-              <button class="order-filter active">全部</button>
-              <button class="order-filter">預約中</button>
-              <button class="order-filter">已完成</button>
-              <button class="order-filter">已取消</button>
+              <button class="order-filter active" data-status="all">全部</button>
+              <button class="order-filter" data-status="reserved">預約中</button>
+              <button class="order-filter" data-status="staying">住宿中</button>
+              <button class="order-filter" data-status="completed">已完成</button>
+              <button class="order-filter" data-status="cancelled">已取消</button>
             </div>
             <div class="member-order-list">
-              <div class="member-order-item">
+              <div class="member-order-item" data-status="reserved">
                 <div class="order-main">
                   <div class="order-id-date">
                     <span class="order-id">訂單編號：PH20251216001</span>
                     <span class="order-date">2025/12/16</span>
                   </div>
                   <div class="order-detail">
-                    <span>住宿 3 晚・小型犬房</span>
+                    <span>住宿 3 晚</span>
+                    <span id="service-PH20251216001" class="service-info">服務：基礎照護</span>
                     <span>保母：阿倫</span>
                   </div>
                 </div>
                 <div class="order-side">
                   <div class="order-price">$ 4,500</div>
                   <div class="order-status order-status-on-going">預約中</div>
-                  <button class="order-link-btn">查看明細</button>
                 </div>
               </div>
 
-              <div class="member-order-item">
+              <div class="member-order-item" data-status="staying">
+                <div class="order-main">
+                  <div class="order-id-date">
+                    <span class="order-id">訂單編號：PH20251220002</span>
+                    <span class="order-date">2025/12/20</span>
+                  </div>
+                  <div class="order-detail">
+                    <span>住宿 5 晚</span>
+                    <span id="service-PH20251220002" class="service-info">服務：精緻美容</span>
+                    <span>保母：David</span>
+                  </div>
+                </div>
+                <div class="order-side">
+                  <div class="order-price">$ 8,000</div>
+                  <div class="order-status order-status-on-going">住宿中</div>
+                  <button class="order-link-btn" onclick="switchToLogs('PH20251220002')">查看照顧日誌</button>
+                </div>
+              </div>
+
+              <div class="member-order-item" data-status="completed">
                 <div class="order-main">
                   <div class="order-id-date">
                     <span class="order-id">訂單編號：PH20251128009</span>
                     <span class="order-date">2025/11/28</span>
                   </div>
                   <div class="order-detail">
-                    <span>住宿 2 晚・中型犬房</span>
+                    <span>住宿 2 晚</span>
+                    <span id="service-PH20251128009" class="service-info">服務：醫療監控</span>
                     <span>保母：小菀</span>
                   </div>
                 </div>
                 <div class="order-side">
                   <div class="order-price">$ 3,200</div>
                   <div class="order-status order-status-done">已完成</div>
-                  <button class="order-link-btn">查看照顧日誌</button>
+                  <button class="order-link-btn" onclick="switchToLogs('PH20251128009')">查看照顧日誌</button>
+                </div>
+              </div>
+
+              <div class="member-order-item" data-status="cancelled">
+                <div class="order-main">
+                  <div class="order-id-date">
+                    <span class="order-id">訂單編號：PH20251010005</span>
+                    <span class="order-date">2025/10/10</span>
+                  </div>
+                  <div class="order-detail">
+                    <span>住宿 1 晚</span>
+                    <span id="service-PH20251010005" class="service-info">服務：基礎照護</span>
+                    <span>保母：Alice</span>
+                  </div>
+                </div>
+                <div class="order-side">
+                  <div class="order-price">$ 1,500</div>
+                  <div class="order-status" style="color: #999;">已取消</div>
                 </div>
               </div>
             </div>
@@ -297,31 +336,33 @@
           <div class="member-card">
             <h2 class="member-card-title">照顧日誌</h2>
             <div class="care-log-list">
-              <article class="care-log-item">
+              <!-- Log for PH20251220002 (Staying) -->
+              <article class="care-log-item" id="log-PH20251220002">
                 <div class="care-log-header">
                   <div>
-                    <div class="care-log-date">2025/11/29・入住第 1 天</div>
-                    <div class="care-log-pet">QQ・3 晚住宿・保母 阿倫</div>
+                    <div class="care-log-date">2025/12/20・入住第 1 天</div>
+                    <div class="care-log-pet">QQ・5 晚住宿・保母 David</div>
                   </div>
                   <span class="care-log-tag">住宿中</span>
                 </div>
                 <div class="care-log-body">
-                  <p>今天 QQ 抵達旅館後很快就放鬆下來，願意主動靠近保母撒嬌，已順利吃完飼料與喝水，排便正常。</p>
-                  <p>散步時遇到人潮會有點緊張，我們有保持適當距離並以零食安撫，目前狀況穩定。</p>
+                  <p>David 回報：QQ 今天入住狀況非常良好，對於大型犬房的空間感到很滿意，已經在專屬庭院跑了好幾圈。</p>
+                  <p>晚餐食慾不錯，全部吃光光。晚上會再安排一次散步。</p>
                 </div>
               </article>
 
-              <article class="care-log-item">
+              <!-- Log for PH20251128009 (Completed) -->
+              <article class="care-log-item" id="log-PH20251128009">
                 <div class="care-log-header">
                   <div>
-                    <div class="care-log-date">2025/08/15・退房</div>
+                    <div class="care-log-date">2025/11/30・退房</div>
                     <div class="care-log-pet">豆花・2 晚住宿・保母 小菀</div>
                   </div>
                   <span class="care-log-tag care-log-tag-done">已完成</span>
                 </div>
                 <div class="care-log-body">
-                  <p>豆花這次入住狀況良好，會主動從窩裡出來伸展、觀察環境，對照顧人員也願意聞手打招呼。</p>
-                  <p>飲食與排泄皆正常，已依飼主要求全程使用自備飼料與砂盆。</p>
+                  <p>小菀回報：豆花這兩天的住宿表現很棒，雖然第一天有點害羞，但第二天已經願意讓人摸摸頭了。</p>
+                  <p>醫療監控數據一切正常，期待下次再見！</p>
                 </div>
               </article>
             </div>
@@ -352,6 +393,32 @@
         panels[key].classList.add('active');
       });
     });
+
+    // 切換到照顧日誌 Tab 並捲動到指定日誌
+    function switchToLogs(orderId) {
+      // 找到 logs tab 按鈕並觸發點擊
+      const logsTab = document.querySelector('.member-tab[data-tab="logs"]');
+      if (logsTab) {
+        logsTab.click();
+        
+        if (orderId) {
+            setTimeout(() => {
+                const logElement = document.getElementById('log-' + orderId);
+                if (logElement) {
+                    logElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    // Optional: Add a highlight effect
+                    logElement.style.transition = 'background-color 0.5s';
+                    logElement.style.backgroundColor = '#FFF4E6'; // Light orange highlight
+                    setTimeout(() => {
+                        logElement.style.backgroundColor = '';
+                    }, 2000);
+                }
+            }, 100); // Small delay to allow tab switch rendering
+        } else {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+      }
+    }
   </script>
 </body>
 </html>
