@@ -1421,17 +1421,37 @@ body {
     font-weight: 600;
   }
   
-  .order-status-on-going {
-    background: #FFF4E6;
-    color: #FE5503;
-    border: 1px solid #FE5503;
-  }
-  
-  .order-status-done {
-    background: #F0FAEB;
-    color: #5A8C2A;
-    border: 1px solid #B4F05A;
-  }
+  /* 預約中（橘） */
+.order-status-reserved {
+  color: #ef6c00;
+  border: 1.5px solid #ef6c00;
+  background-color: #fff3e0;
+  font-weight: 600;
+}
+
+/* 住宿中（藍） */
+.order-status-staying {
+  color: #1565c0;
+  border: 1.5px solid #1565c0;
+  background-color: #e3f2fd;
+  font-weight: 600;
+}
+
+/* 已完成（綠） */
+.order-status-done {
+  color: #2e7d32;
+  border: 1.5px solid #2e7d32;
+  background-color: #e8f5e9;
+  font-weight: 600;
+}
+
+/* 已取消（紅） */
+.order-status-cancelled {
+  color: #c62828;
+  border: 1.5px solid #c62828;
+  background-color: #ffebee;
+  font-weight: 600;
+}
   
   .order-link-btn {
     margin-top: 4px;
@@ -2804,3 +2824,109 @@ body {
   background-clip: text;
   color: transparent;
 }
+
+/* 新增寵物：更圓弧、更好看 */
+.pet-add-section {
+  /* ✅ 置中關鍵 */
+  max-width: 1100px;     /* 你可改成 1000 / 1200，依你想要的寬度 */
+  margin: 0 auto 20px;   /* 左右 auto 置中 + 保留下方距離 */
+
+  padding: 20px 22px;
+  border: 1.5px solid #E8E3D8;
+  border-radius: 24px;
+  background: #FAFAFA;
+}
+
+.pet-add-section h3 {
+  font-size: 17px;
+  font-weight: 900;
+  color: #462C16;
+  margin-bottom: 16px;
+  font-family: "GenSenRounded2 TW";
+}
+
+.pet-add-form {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  align-items: center;
+}
+
+
+@media (max-width: 900px) {
+  .pet-add-form {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .pet-add-form button {
+    justify-self: stretch;
+  }
+}
+
+.pet-add-form input,
+.pet-add-form select {
+  padding: 12px 14px;
+  border: 1px solid #DADADA;
+  border-radius: 18px;
+  font-size: 14px;
+  font-family: "GenSenRounded2 TW", Arial, sans-serif;
+  background: #fff;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.pet-add-form input:focus,
+.pet-add-form select:focus {
+  outline: none;
+  border-color: #B4F05A;
+  box-shadow: 0 0 0 3px rgba(180, 240, 90, 0.35);
+}
+
+.pet-add-form button {
+  grid-column: 1 / -1;   /* ✅ 佔滿整個 grid（最下面一整列） */
+  justify-self: center;
+  margin-top: 16px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 12px 22px;
+  border: none;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #FE5503, #FF7A33);
+  color: #fff;
+  font-weight: 900;
+  font-size: 14px;
+  font-family: "GenSenRounded2 TW";
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+}
+
+.pet-add-form button:hover {
+  opacity: 0.95;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+}
+
+.pet-add-form button:active {
+  transform: translateY(0);
+  box-shadow: 0 3px 8px rgba(0,0,0,0.12);
+}
+
+/* 寵物 avatar emoji 更醒目 */
+.pet-avatar {
+  font-size: 26px; /* emoji 放大 */
+}
+
+/* 寵物資訊多行顯示 */
+.pet-sub {
+  line-height: 1.6;
+  white-space: normal;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .pet-add-form {
+    grid-template-columns: 1fr;
+  }
+  .pet-add-form button {
+    grid-column: auto;
+  }
+}
+
