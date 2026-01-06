@@ -1,3 +1,6 @@
+const api = "https://isawctalevqshenpidxl.supabase.co/functions/v1/api2"
+const authorization = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImlzYXdjdGFsZXZxc2hlbnBpZHhsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjAxMzY5NzgsImV4cCI6MjA3NTcxMjk3OH0.tTc-Qmu3WgBHAK0DW9NNXlNhdOT3XBLDsz5HdVOtpIQ'
+
 /* =========================
  *  Menu (Hamburger)
  * ========================= */
@@ -83,23 +86,46 @@ async function loadPetsIntoSelect() {
   }
 
   try {
-    const res = await fetch(`/api/pets?mId=${encodeURIComponent(mId)}`);
+    const res = await fetch(api, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: authorization,
+      },
+      body: JSON.stringify({
+        method: "getPets",
+        payload: { mId },
+      })
+    });
+
     const text = await res.text();
     const data = text ? JSON.parse(text) : null;
-    if (!res.ok || !data || !data.ok) throw new Error((data && data.message) || `API ${res.status}`);
+
+    if (!res.ok || !data || !data.ok) {
+      throw new Error((data && data.message) || `API ${res.status}`);
+    }
 
     const pets = data.pets || [];
+
     if (!pets.length) {
       petSelect.innerHTML = '<option value="">尚未新增寵物</option>';
       return;
     }
 
-    petSelect.innerHTML = '<option value="">請選擇寵物</option>' + pets.map(p => `<option value="${p.pId}">${p.name} (${p.breed})</option>`).join('');
+    petSelect.innerHTML =
+      '<option value="">請選擇寵物</option>' +
+      pets
+        .map(
+          p => `<option value="${p.pid}">${p.name} (${p.breed})</option>`
+        )
+        .join("");
 
     // 如果 orderData.petId 有值，選回原本選擇
-    if (orderData.petId) petSelect.value = orderData.petId;
+    if (orderData.petId) {
+      petSelect.value = orderData.petId;
+    }
   } catch (e) {
-    console.error('Failed to load pets for order:', e);
+    console.error("Failed to load pets for order:", e);
     petSelect.innerHTML = '<option value="">載入失敗，稍後再試</option>';
   }
 }
@@ -392,35 +418,31 @@ if (loginBtn) {
     }
 
     try {
-      const res = await fetch("/api/login", {
+      const res = await fetch(api, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ username, password }),
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: authorization,
+        },
+        body: JSON.stringify({
+          method: "login",
+          payload: { username, password },
+        }),
       });
 
-      // 先以 text 取得回應，避免空回應導致 res.json() 拋錯
       const text = await res.text();
-      let data = null;
-      try {
-        data = text ? JSON.parse(text) : null;
-      } catch (err) {
-        console.error('Failed to parse /api/login response as JSON:', err, 'responseText:', text);
-        throw new Error('伺服器回應不是有效的 JSON，請檢查後端。');
-      }
+      const data = text ? JSON.parse(text) : null;
 
-      if (!res.ok) {
-        const msg = (data && data.message) ? data.message : `伺服器回應 ${res.status}`;
-        throw new Error(msg);
+      if (!res.ok || !data || !data.ok) {
+        throw new Error((data && data.message) || `API ${res.status}`);
       }
-
-      if (!data || !data.ok) throw new Error((data && data.message) || '帳號或密碼錯誤');
 
       isLoggedIn = true;
       localStorage.setItem("isLoggedIn", "true");
 
-      localStorage.setItem("mId", data.member.mId);
+      // Supabase 欄位：mid
+      localStorage.setItem("mId", data.member.mid);
       localStorage.setItem("memberName", data.member.name || "");
-
       localStorage.setItem("memberPhone", data.member.phone || "");
       localStorage.setItem("memberEmail", data.member.email || "");
       localStorage.setItem("memberAddress", data.member.address || "");
@@ -432,13 +454,12 @@ if (loginBtn) {
       updateLoginUI();
       updateOrderView();
 
-      // If user logs in while staying on the reservation/order page,
-      // refresh the pet dropdown immediately.
-      if (typeof loadPetsIntoSelect === 'function') {
+      // 若在預約頁登入，立即刷新寵物下拉
+      if (typeof loadPetsIntoSelect === "function") {
         loadPetsIntoSelect();
       }
 
-if (usernameInput) usernameInput.value = "";
+      if (usernameInput) usernameInput.value = "";
       if (passwordInput) passwordInput.value = "";
 
       loadAndRenderPets();
@@ -525,30 +546,31 @@ async function loadAndRenderPets() {
   }
 
   try {
-    const res = await fetch(`/api/pets?mId=${encodeURIComponent(mId)}`);
+    const res = await fetch(api, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: authorization,
+      },
+      body: JSON.stringify({
+        method: "getPets",
+        payload: { mId },
+      }),
+    });
 
-    // 參考你 /api/login 的寫法：先拿 text 再 parse，避免後端回 HTML/空字串時直接掛掉:contentReference[oaicite:7]{index=7}
     const text = await res.text();
-    let data = null;
-    try {
-      data = text ? JSON.parse(text) : null;
-    } catch (err) {
-      console.error("Failed to parse /api/pets response as JSON:", err, "responseText:", text);
-      throw new Error("伺服器回應不是有效的 JSON，請檢查後端 /api/pets。");
-    }
+    const data = text ? JSON.parse(text) : null;
 
-    if (!res.ok) {
-      const msg = (data && data.message) ? data.message : `伺服器回應 ${res.status}`;
-      throw new Error(msg);
+    if (!res.ok || !data || !data.ok) {
+      throw new Error((data && data.message) || `API ${res.status}`);
     }
-    if (!data || !data.ok) throw new Error((data && data.message) || "載入失敗");
 
     if (!Array.isArray(data.pets) || data.pets.length === 0) {
       petList.innerHTML = `<div class="hint">目前沒有寵物資料</div>`;
       return;
     }
 
-    // ✅ 用你已存在的現代卡片 renderer:contentReference[oaicite:8]{index=8}
+    // Supabase 結構：pid / mid
     petList.innerHTML = data.pets.map(renderPetCardModern).join("");
   } catch (e) {
     petList.innerHTML = `<div class="hint">載入寵物失敗：${e.message}</div>`;
@@ -602,24 +624,34 @@ function bindAddPetForm() {
     }
 
     try {
-      const res = await fetch("/api/pets", {
+      const res = await fetch(api, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: authorization,
+        },
         body: JSON.stringify({
-          mId,
-          name,
-          breed,
-          birth,
-          ligation,
-          weight,
-          personality,
-          disease,
-          notice,
+          method: "addPet",
+          payload: {
+            mId,
+            name,
+            breed,
+            birth,
+            ligation,
+            weight,
+            personality,
+            disease,
+            notice,
+          },
         }),
       });
 
-      const data = await res.json();
-      if (!data.ok) throw new Error(data.message || "新增失敗");
+      const text = await res.text();
+      const data = text ? JSON.parse(text) : null;
+
+      if (!res.ok || !data || !data.ok) {
+        throw new Error((data && data.message) || `API ${res.status}`);
+      }
 
       if (addPetMsg) addPetMsg.textContent = `新增成功：${data.pet.name}`;
 
@@ -660,14 +692,29 @@ let sitters = [];
 
 async function tryLoadCatalogFromDB() {
   try {
-    const res = await fetch("/api/services");
-    if (!res.ok) return;
+    const res = await fetch(api, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: authorization,
+      },
+      body: JSON.stringify({
+        method: "getServices",
+        payload: {},
+      }),
+    });
 
-    const data = await res.json();
-    if (data && data.ok && Array.isArray(data.services)) {
+    const text = await res.text();
+    const data = text ? JSON.parse(text) : null;
+
+    if (!res.ok || !data || !data.ok) {
+      throw new Error((data && data.message) || `API ${res.status}`);
+    }
+
+    if (Array.isArray(data.services)) {
       services = data.services;
     }
-  } catch (_) {
+  } catch (e) {
     // ignore
   }
 }
@@ -824,17 +871,31 @@ async function renderSitters() {
 
   let dbSitters = [];
   try {
-    const res = await fetch(
-      `/api/sitters?serviceId=${encodeURIComponent(selectedServiceId)}`
-    );
-    const data = await res.json();
-    if (!data.ok) throw new Error(data.message || "載入保母失敗");
+    const res = await fetch(api, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: authorization,
+      },
+      body: JSON.stringify({
+        method: "getSitters",
+        payload: { serviceId: selectedServiceId },
+      }),
+    });
+
+    const text = await res.text();
+    const data = text ? JSON.parse(text) : null;
+
+    if (!res.ok || !data || !data.ok) {
+      throw new Error((data && data.message) || `API ${res.status}`);
+    }
+
     dbSitters = Array.isArray(data.sitters) ? data.sitters : [];
   } catch (e) {
     sitters = [];
     const err = document.createElement("div");
     err.className = "hint";
-    err.textContent = `載入保母失敗：${e.message}`;
+    err.textContent = `載入保母失敗：${e.message || "未知錯誤"}`;
     sitterList.appendChild(err);
     return;
   }
@@ -1209,8 +1270,6 @@ if (submitOrderBtn) {
     }
 
     try {
-      submitOrderBtn.disabled = true;
-
       const payload = {
         mId,
         sId: sitter ? sitter.id : null,
@@ -1220,22 +1279,28 @@ if (submitOrderBtn) {
         items,
       };
 
-      const resp = await fetch("/api/orders", {
+      const res = await fetch(api, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "x-member-id": mId,
+          Authorization: authorization,
         },
-        body: JSON.stringify(payload),
+        body: JSON.stringify({
+          method: "createOrder",
+          payload,
+        }),
       });
 
-      const txt = await resp.text();
-      const data = txt ? JSON.parse(txt) : null;
-      if (!resp.ok || !data || !data.ok) {
-        throw new Error((data && data.message) || `送出失敗 (${resp.status})`);
+      const text = await res.text();
+      const data = text ? JSON.parse(text) : null;
+
+      if (!res.ok || !data || !data.ok) {
+        throw new Error((data && data.message) || `送出失敗 (${res.status})`);
       }
 
-      alert(`訂單已成立！\n訂單編號：${data.bNo}\n送出時間：${data.rDate}\n總金額：$${pricing.total}`);
+      alert(
+        `訂單已成立！\n訂單編號：${data.bNo}\n送出時間：${data.rDate}\n總金額：$${pricing.total}`
+      );
 
       // 成功後重置（保留 petId）
       orderData = {
@@ -1405,8 +1470,8 @@ function normalizeOrderStatus(order) {
 
 function renderOrderItemHTML(order) {
   const st = normalizeOrderStatus(order);
-  const bNo = order.bNo || "-";
-  const orderDate = formatDateYMD(order.rDate);
+  const bNo = order.bno || "-";
+  const orderDate = formatDateYMD(order.rdate);
 
   const nights = Number(order.nights);
 
@@ -1415,13 +1480,13 @@ function renderOrderItemHTML(order) {
     nightsText = `住宿${nights} 晚`;
   }
 
-  const petNames = (order.petNames || "").toString().trim();
+  const petNames = (order.petnames || "").toString().trim();
   const petText = petNames ? `寵物：${petNames}` : "寵物：-";
 
-  const serviceNames = (order.serviceNames || "").toString() || "僅住宿";
-  const sitterName = (order.sitterName || "").toString() || "無專屬保母";
+  const serviceNames = (order.servicenames || "").toString() || "僅住宿";
+  const sitterName = (order.sittername || "").toString() || "無專屬保母";
 
-  const totalPrice = formatMoney(order.totalPrice);
+  const totalPrice = formatMoney(order.totalprice);
 
   // ✅ 只在「住宿中 / 已完成」顯示查看照顧日誌
   const showLogBtn = st.key === "staying" || st.key === "completed";
@@ -1474,20 +1539,24 @@ async function loadAndRenderOrders(force = false) {
   list.innerHTML = `<div class="hint">載入訂單中...</div>`;
 
   try {
-    const res = await fetch(`/api/orders?mId=${encodeURIComponent(mId)}`, {
-      headers: { "x-member-id": mId }, // 讓後端可以比對避免偷看
+    const res = await fetch(api, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: authorization,
+      },
+      body: JSON.stringify({
+        method: "getOrders",
+        payload: { mId },
+      }),
     });
 
     const text = await res.text();
-    let data = null;
-    try {
-      data = text ? JSON.parse(text) : null;
-    } catch (e) {
-      throw new Error("伺服器回應不是有效的 JSON，請檢查後端 /api/orders。");
-    }
+    const data = text ? JSON.parse(text) : null;
 
-    if (!res.ok) throw new Error((data && data.message) || `伺服器回應 ${res.status}`);
-    if (!data || !data.ok) throw new Error((data && data.message) || "載入失敗");
+    if (!res.ok || !data || !data.ok) {
+      throw new Error((data && data.message) || `API ${res.status}`);
+    }
 
     __ordersCache = Array.isArray(data.orders) ? data.orders : [];
     __ordersLoadedOnce = true;
@@ -1549,31 +1618,47 @@ async function loadAndRenderCareLogs(targetBNo = null) {
 
   container.innerHTML = "<p>載入照顧日誌中...</p>";
 
-  const res = await fetch(`/api/carelogs?mId=${encodeURIComponent(mId)}`);
-  const data = await res.json();
+  try {
+    const res = await fetch(api, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: authorization,
+      },
+      body: JSON.stringify({
+        method: "getCareLogs",
+        payload: { mId },
+      }),
+    });
 
-  if (!data.ok) {
-    container.innerHTML = "<p>載入失敗</p>";
-    return;
-  }
+    const text = await res.text();
+    const data = text ? JSON.parse(text) : null;
 
-  container.innerHTML = data.logs.map(renderCareLogHTML).join("");
+    if (!res.ok || !data || !data.ok) {
+      throw new Error((data && data.message) || `API ${res.status}`);
+    }
 
-  // 若是從訂單點進來，自動捲動
-  if (targetBNo) {
-    const el = document.getElementById(`log-${targetBNo}`);
-    if (el) el.scrollIntoView({ behavior: "smooth" });
+    container.innerHTML = data.logs.map(renderCareLogHTML).join("");
+
+    // 若是從訂單點進來，自動捲動
+    if (targetBNo) {
+      const el = document.getElementById(`log-${targetBNo}`);
+      if (el) el.scrollIntoView({ behavior: "smooth" });
+    }
+  } catch (e) {
+    container.innerHTML = "<p>載入失敗，請稍後再試</p>";
+    console.error("Failed to load care logs:", e);
   }
 }
 
 function renderCareLogHTML(log) {
-  const dateText = new Date(log.recordTime).toLocaleDateString();
+  const dateText = new Date(log.recordtime).toLocaleDateString();
 
   // ✅ 完全對齊「訂單明細」的狀態樣式
   let statusClass = "order-status-on-going";
   let statusText = "住宿中";
 
-  const raw = (log.bookingStatus || "").toString();
+  const raw = (log.bookingstatus || "").toString();
 
   // 依 Booking.status 決定樣式（和訂單同規則）
   if (raw.includes("完成")) {
@@ -1585,12 +1670,12 @@ function renderCareLogHTML(log) {
   }
 
   return `
-    <div class="care-log-item" id="log-${log.bNo}">
+    <div class="care-log-item" id="log-${log.bno}">
       <div class="care-log-header">
         <div>
           <div class="care-log-date">${dateText}</div>
           <div class="care-log-pet">
-            訂單編號${log.bNo}・${log.petName || "-"}・${log.nights}晚住宿・保母${log.sitterName || "-"}
+            訂單編號${log.bno}・${log.petname || "-"}・${log.nights}晚住宿・保母${log.sittername || "-"}
           </div>
         </div>
 
@@ -1655,14 +1740,23 @@ async function loadPendingOrderCount() {
   if (!mId) return;
 
   try {
-    const resp = await fetch("/api/orders/pending/summary", {
-      headers: { "x-member-id": mId },
+    const res = await fetch(api, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: authorization,
+      },
+      body: JSON.stringify({
+        method: "getPendingOrderSummary",
+        payload: { mId },
+      }),
     });
 
-    const data = await resp.json();
-    if (!data.ok) {
-      console.warn("載入預約中訂單失敗", data.message);
-      return;
+    const text = await res.text();
+    const data = text ? JSON.parse(text) : null;
+
+    if (!res.ok || !data || !data.ok) {
+      throw new Error((data && data.message) || `API ${res.status}`);
     }
 
     const el = document.getElementById("pendingOrderCount");
